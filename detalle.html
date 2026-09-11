@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle del Alumno</title>
+
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header class="top-nav">
+
+    <div class="nav-brand">
+        <img src="img/logo-uaemex.png" class="nav-logo">
+
+        <div>
+            <h3>IMPULSO EMPRENDE 2026</h3>
+            <p>Pasaporte del Participante</p>
+        </div>
+    </div>
+
+    <div class="nav-user">
+        <button onclick="history.back()" class="logout-nav">
+            Regresar
+        </button>
+    </div>
+
+</header>
+
+<main class="dashboard">
+
+    <section class="hero-dashboard">
+
+        <div>
+            <p class="evento">PARTICIPANTE</p>
+            <h1 id="nombre"></h1>
+            <p id="carrera" class="subtitulo"></p>
+        </div>
+
+        <div class="hero-progress">
+            <span>PROGRESO</span>
+            <h2 id="porcentaje">0%</h2>
+        </div>
+
+    </section>
+
+    <!-- Credencial -->
+
+    <section class="credencial">
+
+        <div class="cred-top">
+            <span class="badge-pass">PASAPORTE DIGITAL</span>
+        </div>
+
+        <h2 id="nombreCred"></h2>
+
+        <p id="carreraCred"></p>
+
+        <small id="control"></small>
+
+        <div class="progress-area">
+
+            <div class="progress-bar">
+                <div id="barra"></div>
+            </div>
+
+            <p id="texto"></p>
+
+        </div>
+
+    </section>
+
+    <!-- Actividades -->
+
+    <section style="margin-top:30px;">
+
+        <div class="titulo-seccion">
+            <h2>Actividades Completadas</h2>
+            <p>Registro oficial de asistencia.</p>
+        </div>
+
+        <div id="actividades" class="agenda-grid"></div>
+
+    </section>
+
+    <!-- Insignias -->
+
+    <section style="margin-top:40px;">
+
+        <div class="titulo-seccion">
+            <h2>Insignias</h2>
+        </div>
+
+        <div id="insignias" class="insignias-grid"></div>
+
+    </section>
+
+</main>
+
+<script src="js/detalle.js"></script>
+
+</body>
+</html>

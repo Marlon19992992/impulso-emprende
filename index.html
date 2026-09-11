@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulso Emprende 2026</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<main class="landing">
+
+    <!-- LADO IZQUIERDO -->
+    <section class="hero">
+
+        <p class="hero-mini">UAEMÉX PRESENTA</p>
+
+        <h1>IMPULSO</h1>
+        <h2>EMPRENDE 2026</h2>
+
+        <p class="hero-texto">
+            Festival universitario de innovación, emprendimiento y tecnología.
+        </p>
+
+        <!-- Escudo -->
+        <div class="escenario">
+
+            <img src="img/logo-uaemex.png"
+                 class="logo-uaemex"
+                 alt="UAEMEX">
+
+            <div class="escudo-info">
+
+                <h3>Universidad Autónoma del Estado de México</h3>
+
+                <div class="chips">
+                    <span>Innovación</span>
+                    <span>Emprendimiento</span>
+                    <span>Tecnología</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="base"></div>
+
+    </section>
+
+    <!-- LADO DERECHO -->
+    <section class="card">
+
+        <p class="evento">REGISTRO OFICIAL</p>
+
+        <h1>Obtén tu Pasaporte</h1>
+
+        <p class="descripcion">
+            Completa tus datos para ingresar al festival y registrar tus actividades.
+        </p>
+
+        <form id="registroForm">
+
+            <label>Nombre completo</label>
+            <input id="nombre" type="text" required>
+
+            <label>Número de control</label>
+            <input id="control" type="text" maxlength="10" required>
+
+            <label>Correo institucional</label>
+            <input id="correo" type="email" required>
+
+            <label>Carrera</label>
+
+            <select id="carrera" required>
+                <option value="">Selecciona tu carrera</option>
+                <option>Ingeniería en Sistemas Computacionales</option>
+                <option>Ingeniería en Computación</option>
+                <option>Ingeniería en Software</option>
+                <option>Ingeniería Industrial</option>
+                <option>Ingeniería Mecánica</option>
+                <option>Ingeniería Civil</option>
+                <option>Ingeniería Electrónica</option>
+                <option>Arquitectura</option>
+                <option>Administración</option>
+                <option>Contaduría</option>
+                <option>Mercadotecnia</option>
+                <option>Derecho</option>
+                <option>Psicología</option>
+                <option>Diseño Gráfico</option>
+            </select>
+
+            <button type="submit">
+                Ingresar al Festival
+            </button>
+
+            <button type="button" id="adminBtn" class="admin-login">
+                Entrar como administrador
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

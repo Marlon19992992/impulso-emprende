@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulso Emprende 2026 | Dashboard</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- ==========================================
+     NAVBAR SUPERIOR
+========================================== -->
+
+<header class="top-nav">
+
+    <div class="nav-brand">
+
+        <img src="img/logo-uaemex.png" class="nav-logo">
+
+        <div>
+            <h3>IMPULSO EMPRENDE 2026</h3>
+            <p>UAEMÉX · Festival Universitario</p>
+        </div>
+
+    </div>
+
+    <nav class="nav-links">
+
+        <a class="active" data-tab="agenda">Agenda</a>
+
+        <a data-tab="pasaporte">Mi Pasaporte</a>
+
+        <a data-tab="insignias">Insignias</a>
+
+        <a data-tab="mapa">Mapa</a>
+
+    </nav>
+
+    <div class="nav-user">
+
+        <span id="nombreNav">Alumno</span>
+
+        <button id="salir" class="logout-nav">
+            Salir
+        </button>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+     CONTENIDO
+========================================== -->
+
+<main class="dashboard">
+
+    <!-- HERO -->
+
+    <section class="hero-dashboard">
+
+        <div>
+            <p class="evento">15–16 OCTUBRE · UAEMÉX</p>
+
+            <h1 id="saludo">Bienvenido</h1>
+
+            <p class="subtitulo">
+                Festival Universitario de Innovación, Emprendimiento y Tecnología
+            </p>
+        </div>
+
+        <div class="hero-progress">
+
+            <span>PROGRESO GENERAL</span>
+
+            <h2 id="porcentaje">0%</h2>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         AGENDA
+    ========================================== -->
+
+    <section id="agenda" class="tab-content active">
+
+        <div class="titulo-seccion">
+
+            <h2>Agenda del Festival</h2>
+
+            <p>
+                Selecciona cualquiera de las actividades para visualizar su información.
+            </p>
+
+        </div>
+
+        <div id="listaAgenda" class="agenda-grid"></div>
+
+    </section>
+
+    <!-- ==========================================
+         PASAPORTE
+    ========================================== -->
+
+    <section id="pasaporte" class="tab-content">
+
+        <div class="credencial">
+
+            <div class="cred-top">
+
+                <span class="badge-pass">
+                    PASAPORTE DIGITAL
+                </span>
+
+                <button id="mostrarQR" class="qr-btn">
+                    Ver QR
+                </button>
+
+            </div>
+
+            <h2 id="nombrePass">Alumno</h2>
+
+            <p id="carreraPass">Carrera</p>
+
+            <small id="controlPass">
+                Número de Control
+            </small>
+
+            <div class="progress-area">
+
+                <div class="progress-bar">
+                    <div id="barra"></div>
+                </div>
+
+                <p id="textoProgreso">
+                    0 de 7 actividades completadas
+                </p>
+
+            </div>
+
+        </div>
+
+<!-- ===== Carrusel de Actividades ===== -->
+<div class="actividad-card">
+
+    <button class="flecha izquierda" id="prev"></button>
+
+    <div id="panel" class="actividad-contenido">
+
+        <div id="tipo" class="tag">ESCENARIO</div>
+
+        <h2 id="titulo">Actividad</h2>
+
+        <p id="descripcion"></p>
+
+        <div class="datos">
+            <span id="hora"></span>
+            <span id="lugar"></span>
+        </div>
+
+        <button id="completar">Marcar asistencia</button>
+
+        <div class="indicadores" id="dots"></div>
+
+    </div>
+
+    <button class="flecha derecha" id="next"></button>
+
+</div>
+
+
+    </section>
+
+    <!-- ==========================================
+         INSIGNIAS
+    ========================================== -->
+
+    <section id="insignias" class="tab-content">
+
+        <div class="titulo-seccion">
+
+            <h2>Mis Insignias</h2>
+
+            <p>
+                Las insignias se desbloquean automáticamente al completar cada actividad.
+            </p>
+
+        </div>
+
+        <div id="listaInsignias" class="insignias-grid"></div>
+
+    </section>
+
+    <!-- ==========================================
+         MAPA
+    ========================================== -->
+
+    <section id="mapa" class="tab-content">
+
+        <div class="titulo-seccion">
+
+            <h2>Mapa del Evento</h2>
+
+            <p>
+                Ubicación de escenarios, talleres y zonas de convivencia.
+            </p>
+
+        </div>
+
+        <div class="mapa-box">
+
+            <h3>MAPA INTERACTIVO</h3>
+
+            <p>
+                Próximamente disponible
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ==========================================
+     MODAL QR
+========================================== -->
+
+<div id="modalQR" class="modal">
+
+    <div class="modal-card">
+
+        <h2>Credencial Digital</h2>
+
+        <div id="qrReal" class="qr-real"></div>
+
+        <h3 id="nombreQR"></h3>
+
+        <p id="controlQR"></p>
+
+        <button onclick="cerrarQR()">
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
