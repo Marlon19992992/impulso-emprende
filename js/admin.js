@@ -4,20 +4,14 @@
 // =======================================
 
 // Si ya inició sesión entra directo al panel
-if(localStorage.getItem("admin") === "true"){
+if (localStorage.getItem("admin") === "true") {
     window.location.href = "panel.html";
 }
 
-const formulario = document.getElementById("adminForm");
-const volver = document.getElementById("volver");
+const formulario = document.getElementById("loginAdmin");
+const mensaje = document.getElementById("mensaje");
 
-// Volver al registro
-volver.addEventListener("click", ()=>{
-    window.location.href = "index.html";
-});
-
-// Login
-formulario.addEventListener("submit",(e)=>{
+formulario.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -25,15 +19,24 @@ formulario.addEventListener("submit",(e)=>{
     const password = document.getElementById("password").value.trim();
 
     // Credenciales temporales
-    if(usuario === "admin" && password === "uaemex2026"){
+    if (usuario === "admin" && password === "uaemex2026") {
 
-        localStorage.setItem("admin","true");
+        localStorage.setItem("admin", "true");
 
-        window.location.href = "panel.html";
+        mensaje.style.color = "#22c55e";
+        mensaje.textContent = "Acceso correcto...";
 
-    }else{
+        setTimeout(() => {
+            window.location.href = "panel.html";
+        }, 500);
 
-        alert("Usuario o contraseña incorrectos");
+    } else {
+
+        mensaje.style.color = "#ef4444";
+        mensaje.textContent = "Usuario o contraseña incorrectos";
+
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
 
     }
 

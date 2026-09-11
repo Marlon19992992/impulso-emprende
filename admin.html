@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    //Esto es el administrador
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador | Impulso Emprende 2026</title>
@@ -15,16 +14,13 @@
 <div class="background"></div>
 
 <header class="top-nav">
-
     <div class="nav-brand">
-        <img src="img/logo-uaemex.png" class="nav-logo">
-
+        <img src="img/logo-uaemex.png" class="nav-logo" alt="UAEMéx">
         <div>
             <h3>IMPULSO EMPRENDE 2026</h3>
             <p>Panel de Administración</p>
         </div>
     </div>
-
 </header>
 
 <main class="admin-page">
@@ -32,23 +28,17 @@
     <section class="admin-card">
 
         <div class="admin-header">
-
             <div class="admin-icon">🛡️</div>
-
             <p>ACCESO RESTRINGIDO</p>
-
             <h1>Administrador</h1>
-
             <span>
                 Solo personal autorizado del festival puede ingresar al panel de control.
             </span>
-
         </div>
 
         <form id="loginAdmin" class="admin-form">
 
-            <label>Usuario</label>
-
+            <label for="usuario">Usuario</label>
             <input
                 id="usuario"
                 type="text"
@@ -56,8 +46,7 @@
                 required
             >
 
-            <label>Contraseña</label>
-
+            <label for="password">Contraseña</label>
             <input
                 id="password"
                 type="password"
@@ -73,9 +62,7 @@
                 type="button"
                 class="volver-btn"
                 onclick="window.location.href='index.html'">
-
                 ← Volver al Registro
-
             </button>
 
         </form>
