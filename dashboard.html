@@ -1,258 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impulso Emprende 2026 | Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impulso UAEMéx 365</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="dashboard-body">
 
-<div class="background"></div>
+  <header class="topbar">
 
-<!-- ==========================================
-     NAVBAR SUPERIOR
-========================================== -->
+    <div class="usuario">
+      <img src="img/logo-uaemex.png" class="logo">
 
-<header class="top-nav">
-
-    <div class="nav-brand">
-
-        <img src="img/logo-uaemex.png" class="nav-logo">
-
-        <div>
-            <h3>IMPULSO EMPRENDE 2026</h3>
-            <p>UAEMÉX · Festival Universitario</p>
-        </div>
-
+      <div>
+        <span>IMPULSO UAEMÉX 365</span>
+        <h2 id="saludo">Bienvenido</h2>
+      </div>
     </div>
 
-    <nav class="nav-links">
-
-        <a class="active" data-tab="agenda">Agenda</a>
-
-        <a data-tab="pasaporte">Mi Pasaporte</a>
-
-        <a data-tab="insignias">Insignias</a>
-
-        <a data-tab="mapa">Mapa</a>
-
-    </nav>
-
-    <div class="nav-user">
-
-        <span id="nombreNav">Alumno</span>
-
-        <button id="salir" class="logout-nav">
-            Salir
-        </button>
-
+    <div class="progreso">
+      <small>TIERRAS COMPLETADAS</small>
+      <h1>0/7</h1>
     </div>
 
-</header>
+  </header>
 
-<!-- ==========================================
-     CONTENIDO
-========================================== -->
+  <main class="dashboard">
 
-<main class="dashboard">
+    <section class="hero">
 
-    <!-- HERO -->
+      <span class="fecha">15–16 OCTUBRE · UAEMÉX</span>
 
-    <section class="hero-dashboard">
+      <h1>Festival Universitario de Innovación</h1>
 
-        <div>
-            <p class="evento">15–16 OCTUBRE · UAEMÉX</p>
-
-            <h1 id="saludo">Bienvenido</h1>
-
-            <p class="subtitulo">
-                Festival Universitario de Innovación, Emprendimiento y Tecnología
-            </p>
-        </div>
-
-        <div class="hero-progress">
-
-            <span>PROGRESO GENERAL</span>
-
-            <h2 id="porcentaje">0%</h2>
-
-        </div>
+      <p>
+        Explora las Tierras Temáticas, participa en conferencias,
+        talleres y paneles. Escanea el QR de cada actividad y obtén
+        tus insignias digitales.
+      </p>
 
     </section>
 
-    <!-- ==========================================
-         AGENDA
-    ========================================== -->
+    <!-- TIERRAS -->
 
-    <section id="agenda" class="tab-content active">
+    <section class="tierras">
 
-        <div class="titulo-seccion">
+      <h2>Tierras Temáticas</h2>
 
-            <h2>Agenda del Festival</h2>
+      <div class="grid-tierras">
 
-            <p>
-                Selecciona cualquiera de las actividades para visualizar su información.
-            </p>
+        <article class="tierra" onclick="abrirTierra(1)">
+          <div class="hex verde">🌐</div>
+          <span>TIERRA</span>
+          <h3>Cultura</h3>
+          <small>Facultad de Artes</small>
+          <p>Innovación, patrimonio y economía creativa.</p>
+        </article>
 
-        </div>
+        <article class="tierra" onclick="abrirTierra(2)">
+          <div class="hex naranja">🏃</div>
+          <span>TIERRA</span>
+          <h3>Deporte</h3>
+          <small>Centro Deportivo</small>
+          <p>Actividad física y liderazgo deportivo.</p>
+        </article>
 
-        <div id="listaAgenda" class="agenda-grid"></div>
+        <article class="tierra" onclick="abrirTierra(3)">
+          <div class="hex azul">⚙</div>
+          <span>TIERRA</span>
+          <h3>Tecnología</h3>
+          <small>Facultad de Ingeniería</small>
+          <p>IA, Software y Ciberseguridad.</p>
+        </article>
 
-    </section>
+        <article class="tierra" onclick="abrirTierra(4)">
+          <div class="hex morado">✎</div>
+          <span>TIERRA</span>
+          <h3>Diseño</h3>
+          <small>Arquitectura y Diseño</small>
+          <p>UX, diseño gráfico y creatividad.</p>
+        </article>
 
-    <!-- ==========================================
-         PASAPORTE
-    ========================================== -->
+        <article class="tierra" onclick="abrirTierra(5)">
+          <div class="hex turquesa">✳</div>
+          <span>TIERRA</span>
+          <h3>Investigación</h3>
+          <small>Economía y Contaduría</small>
+          <p>Patentes e innovación aplicada.</p>
+        </article>
 
-    <section id="pasaporte" class="tab-content">
+        <article class="tierra" onclick="abrirTierra(6)">
+          <div class="hex gris">⚖</div>
+          <span>TIERRA</span>
+          <h3>Gobernanza</h3>
+          <small>Facultad de Derecho</small>
+          <p>Protección de datos y legislación.</p>
+        </article>
 
-        <div class="credencial">
+        <article class="tierra tierra-full" onclick="abrirTierra(7)">
+          <div class="hex verde2">❋</div>
+          <span>TIERRA</span>
+          <h3>Bienestar Integral</h3>
+          <small>Turismo y Gastronomía</small>
+          <p>Salud, turismo e internacionalización.</p>
+        </article>
 
-            <div class="cred-top">
-
-                <span class="badge-pass">
-                    PASAPORTE DIGITAL
-                </span>
-
-                <button id="mostrarQR" class="qr-btn">
-                    Ver QR
-                </button>
-
-            </div>
-
-            <h2 id="nombrePass">Alumno</h2>
-
-            <p id="carreraPass">Carrera</p>
-
-            <small id="controlPass">
-                Número de Control
-            </small>
-
-            <div class="progress-area">
-
-                <div class="progress-bar">
-                    <div id="barra"></div>
-                </div>
-
-                <p id="textoProgreso">
-                    0 de 7 actividades completadas
-                </p>
-
-            </div>
-
-        </div>
-
-<!-- ===== Carrusel de Actividades ===== -->
-<div class="actividad-card">
-
-    <button class="flecha izquierda" id="prev"></button>
-
-    <div id="panel" class="actividad-contenido">
-
-        <div id="tipo" class="tag">ESCENARIO</div>
-
-        <h2 id="titulo">Actividad</h2>
-
-        <p id="descripcion"></p>
-
-        <div class="datos">
-            <span id="hora"></span>
-            <span id="lugar"></span>
-        </div>
-
-        <button id="completar">Marcar asistencia</button>
-
-        <div class="indicadores" id="dots"></div>
-
-    </div>
-
-    <button class="flecha derecha" id="next"></button>
-
-</div>
-
+      </div>
 
     </section>
 
-    <!-- ==========================================
-         INSIGNIAS
-    ========================================== -->
+    <!-- INSIGNIAS -->
 
-    <section id="insignias" class="tab-content">
+    <section class="insignias">
 
-        <div class="titulo-seccion">
+      <h2>Mis Insignias</h2>
 
-            <h2>Mis Insignias</h2>
+      <div class="grid-insignias">
 
-            <p>
-                Las insignias se desbloquean automáticamente al completar cada actividad.
-            </p>
+        <div class="badge">🏅 Cultura</div>
+        <div class="badge">🏅 Deporte</div>
+        <div class="badge">🏅 Tecnología</div>
+        <div class="badge">🏅 Diseño</div>
+        <div class="badge">🏅 Investigación</div>
+        <div class="badge">🏅 Gobernanza</div>
+        <div class="badge">🏅 Bienestar</div>
 
-        </div>
-
-        <div id="listaInsignias" class="insignias-grid"></div>
-
-    </section>
-
-    <!-- ==========================================
-         MAPA
-    ========================================== -->
-
-    <section id="mapa" class="tab-content">
-
-        <div class="titulo-seccion">
-
-            <h2>Mapa del Evento</h2>
-
-            <p>
-                Ubicación de escenarios, talleres y zonas de convivencia.
-            </p>
-
-        </div>
-
-        <div class="mapa-box">
-
-            <h3>MAPA INTERACTIVO</h3>
-
-            <p>
-                Próximamente disponible
-            </p>
-
-        </div>
+      </div>
 
     </section>
 
-</main>
+  </main>
 
-<!-- ==========================================
-     MODAL QR
-========================================== -->
-
-<div id="modalQR" class="modal">
-
-    <div class="modal-card">
-
-        <h2>Credencial Digital</h2>
-
-        <div id="qrReal" class="qr-real"></div>
-
-        <h3 id="nombreQR"></h3>
-
-        <p id="controlQR"></p>
-
-        <button onclick="cerrarQR()">
-            Cerrar
-        </button>
-
-    </div>
-
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="js/dashboard.js"></script>
+  <script src="js/dashboard.js"></script>
 
 </body>
 </html>

@@ -1,95 +1,109 @@
-const alumno = JSON.parse(localStorage.getItem("alumnoSeleccionado"));
+const id = Number(localStorage.getItem("tierra"));
 
-if(!alumno){
-    location.href = "panel.html";
+const tierras = {
+1:{
+nombre:"Cultura",
+descripcion:"Conferencias de arte, música y economía creativa.",
+color:"#16a34a",
+actividades:[
+["09:00","Conferencia","Innovación Cultural"],
+["12:00","Taller","Branding para Artistas"],
+["15:00","Panel","Economía Creativa"]
+]
+},
+
+2:{
+nombre:"Deporte",
+descripcion:"Salud, actividad física y emprendimiento deportivo.",
+color:"#ea580c",
+actividades:[
+["10:00","Conferencia","Marketing Fitness"],
+["13:00","Taller","Nutrición Deportiva"],
+["16:00","Networking","Clubes Universitarios"]
+]
+},
+
+3:{
+nombre:"Tecnología",
+descripcion:"IA, programación, software y ciberseguridad.",
+color:"#2563eb",
+actividades:[
+["09:00","Magistral","Inteligencia Artificial"],
+["11:00","Taller","Flutter desde Cero"],
+["14:00","Panel","Ciberseguridad e Innovación"]
+]
+},
+
+4:{
+nombre:"Diseño",
+descripcion:"UX/UI, arquitectura y creatividad.",
+color:"#7c3aed",
+actividades:[
+["09:30","Workshop","UX para Startups"],
+["12:30","Taller","Diseño con IA"],
+["15:30","Conferencia","Arquitectura Sostenible"]
+]
+},
+
+5:{
+nombre:"Investigación",
+descripcion:"Ciencia, patentes e innovación aplicada.",
+color:"#0d9488",
+actividades:[
+["10:00","Coloquio","Patentes Universitarias"],
+["13:00","Panel","Investigación Aplicada"],
+["16:00","Networking","Vinculación Científica"]
+]
+},
+
+6:{
+nombre:"Gobernanza",
+descripcion:"Derecho, transparencia y protección de datos.",
+color:"#64748b",
+actividades:[
+["09:00","Conferencia","Protección de Datos"],
+["11:30","Panel","Derecho para Startups"],
+["15:00","Taller","Ciberseguridad Fiscal"]
+]
+},
+
+7:{
+nombre:"Bienestar",
+descripcion:"Salud integral, turismo y gastronomía.",
+color:"#15803d",
+actividades:[
+["10:00","Taller","Salud y Productividad"],
+["13:00","Experiencia","Gastronomía Mexiquense"],
+["16:30","Conferencia","Turismo Inteligente"]
+]
 }
+};
 
-document.getElementById("nombre").textContent = alumno.nombre;
-document.getElementById("nombreCred").textContent = alumno.nombre;
+const tierra = tierras[id] || tierras[3];
 
-document.getElementById("carrera").textContent = alumno.carrera;
-document.getElementById("carreraCred").textContent = alumno.carrera;
+document.getElementById("nombreTierra").textContent=tierra.nombre;
+document.getElementById("tituloTierra").textContent="Tierra "+tierra.nombre;
+document.getElementById("descripcionTierra").textContent=tierra.descripcion;
 
-document.getElementById("control").textContent =
-"Control: " + alumno.control;
+const lista=document.getElementById("listaActividades");
 
-const progreso = JSON.parse(
-localStorage.getItem("pasaporte_"+alumno.control)
-) || [];
+tierra.actividades.forEach(act=>{
 
-const contenedor = document.getElementById("actividades");
-const insignias = document.getElementById("insignias");
+lista.innerHTML+=`
+<div class="tierra actividad">
 
-let hechas = 0;
+<div style="display:flex;justify-content:space-between">
+<strong>${act[0]}</strong>
+<span>${act[1]}</span>
+</div>
 
-progreso.forEach(act=>{
+<h3>${act[2]}</h3>
 
-    if(act.done) hechas++;
+<button class="qr-btn">
+Escanear QR
+</button>
 
-    const card = document.createElement("div");
-
-    card.className = "card-agenda";
-    card.style.borderLeft = "6px solid "+act.color;
-
-    card.innerHTML = `
-        <div class="agenda-top">
-
-            <span class="agenda-badge"
-                  style="background:${act.color}">
-                ${act.hora}
-            </span>
-
-            ${
-                act.done
-                ? '<span class="agenda-check">✓</span>'
-                : '<span>⏳</span>'
-            }
-
-        </div>
-
-        <h3>${act.titulo}</h3>
-
-        <p>${act.descripcion}</p>
-
-        <div class="agenda-info">
-            <span>${act.lugar}</span>
-        </div>
-    `;
-
-    contenedor.appendChild(card);
-
-    const badge = document.createElement("div");
-
-    badge.className =
-    "insignia " +
-    (act.done ? "desbloqueada":"bloqueada");
-
-    badge.innerHTML = `
-        <div class="icono"
-             style="background:${act.color}">
-            ${act.done ? "🏅":"🔒"}
-        </div>
-
-        <h4>Actividad ${act.id}</h4>
-
-        <p>${
-            act.done
-            ? "Obtenida"
-            : "Pendiente"
-        }</p>
-    `;
-
-    insignias.appendChild(badge);
+</div>
+`;
 
 });
-
-const porcentaje = Math.round((hechas/7)*100);
-
-document.getElementById("porcentaje").textContent =
-porcentaje + "%";
-
-document.getElementById("barra").style.width =
-porcentaje + "%";
-
-document.getElementById("texto").textContent =
-`${hechas} de 7 actividades completadas`;
