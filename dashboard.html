@@ -1,141 +1,102 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impulso UAEMéx 365</title>
-
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-
 <body class="dashboard-body">
 
-  <header class="topbar">
+    <!-- ========== NAVBAR ========== -->
+    <header class="navbar">
 
-    <div class="usuario">
-      <img src="img/logo-uaemex.png" class="logo">
+        <div class="nav-logo">
+            <img src="img/logo-uaemex.png" alt="UAEMéx" class="logo">
 
-      <div>
-        <span>IMPULSO UAEMÉX 365</span>
-        <h2 id="saludo">Bienvenido</h2>
-      </div>
-    </div>
+            <div class="logo-texto">
+                <h3>IMPULSO UAEMÉX 365</h3>
+                <span>Festival Universitario de Innovación</span>
+            </div>
+        </div>
 
-    <div class="progreso">
-      <small>TIERRAS COMPLETADAS</small>
-      <h1>0/7</h1>
-    </div>
+        <nav class="nav-menu">
 
-  </header>
+            <button class="nav-link active" data-panel="tierras">
+                Tierras
+            </button>
 
-  <main class="dashboard">
+            <button class="nav-link" data-panel="insignias">
+                Insignias
+            </button>
 
-    <section class="hero">
+            <button class="nav-link" data-panel="pasaporte">
+                Mi Pasaporte
+            </button>
 
-      <span class="fecha">15–16 OCTUBRE · UAEMÉX</span>
+            <button class="nav-link" data-panel="agenda">
+                Agenda
+            </button>
 
-      <h1>Festival Universitario de Innovación</h1>
+            <button class="nav-link" data-panel="mapa">
+                Mapa
+            </button>
 
-      <p>
-        Explora las Tierras Temáticas, participa en conferencias,
-        talleres y paneles. Escanea el QR de cada actividad y obtén
-        tus insignias digitales.
-      </p>
+        </nav>
 
-    </section>
+        <div class="nav-user">
 
-    <!-- TIERRAS -->
+            <small>TIERRAS COMPLETADAS</small>
 
-    <section class="tierras">
+            <h2 id="progresoTexto">0/7</h2>
 
-      <h2>Tierras Temáticas</h2>
+        </div>
 
-      <div class="grid-tierras">
+    </header>
 
-        <article class="tierra" onclick="abrirTierra(1)">
-          <div class="hex verde">🌐</div>
-          <span>TIERRA</span>
-          <h3>Cultura</h3>
-          <small>Facultad de Artes</small>
-          <p>Innovación, patrimonio y economía creativa.</p>
-        </article>
 
-        <article class="tierra" onclick="abrirTierra(2)">
-          <div class="hex naranja">🏃</div>
-          <span>TIERRA</span>
-          <h3>Deporte</h3>
-          <small>Centro Deportivo</small>
-          <p>Actividad física y liderazgo deportivo.</p>
-        </article>
+    <!-- ========== CONTENIDO ========== -->
+    <main class="dashboard">
 
-        <article class="tierra" onclick="abrirTierra(3)">
-          <div class="hex azul">⚙</div>
-          <span>TIERRA</span>
-          <h3>Tecnología</h3>
-          <small>Facultad de Ingeniería</small>
-          <p>IA, Software y Ciberseguridad.</p>
-        </article>
+        <!-- HERO -->
+        <section class="hero">
 
-        <article class="tierra" onclick="abrirTierra(4)">
-          <div class="hex morado">✎</div>
-          <span>TIERRA</span>
-          <h3>Diseño</h3>
-          <small>Arquitectura y Diseño</small>
-          <p>UX, diseño gráfico y creatividad.</p>
-        </article>
+            <div class="hero-info">
 
-        <article class="tierra" onclick="abrirTierra(5)">
-          <div class="hex turquesa">✳</div>
-          <span>TIERRA</span>
-          <h3>Investigación</h3>
-          <small>Economía y Contaduría</small>
-          <p>Patentes e innovación aplicada.</p>
-        </article>
+                <span class="fecha">
+                    15–16 OCTUBRE · CENTRO UNIVERSITARIO UAEMÉX
+                </span>
 
-        <article class="tierra" onclick="abrirTierra(6)">
-          <div class="hex gris">⚖</div>
-          <span>TIERRA</span>
-          <h3>Gobernanza</h3>
-          <small>Facultad de Derecho</small>
-          <p>Protección de datos y legislación.</p>
-        </article>
+                <h1>
+                    Festival Universitario de Innovación
+                </h1>
 
-        <article class="tierra tierra-full" onclick="abrirTierra(7)">
-          <div class="hex verde2">❋</div>
-          <span>TIERRA</span>
-          <h3>Bienestar Integral</h3>
-          <small>Turismo y Gastronomía</small>
-          <p>Salud, turismo e internacionalización.</p>
-        </article>
+                <p>
+                    Explora las siete Tierras Temáticas, participa en talleres,
+                    conferencias y retos de innovación. Escanea el QR de cada
+                    actividad y obtén tus insignias digitales.
+                </p>
 
-      </div>
+            </div>
 
-    </section>
+            <div class="hero-stats">
 
-    <!-- INSIGNIAS -->
+                <div class="stat">
+                    <h2>7</h2>
+                    <span>Tierras</span>
+                </div>
 
-    <section class="insignias">
+                <div class="stat">
+                    <h2>35+</h2>
+                    <span>Actividades</span>
+                </div>
 
-      <h2>Mis Insignias</h2>
+                <div class="stat">
+                    <h2>1500</h2>
+                    <span>Participantes</span>
+                </div>
 
-      <div class="grid-insignias">
+            </div>
 
-        <div class="badge">🏅 Cultura</div>
-        <div class="badge">🏅 Deporte</div>
-        <div class="badge">🏅 Tecnología</div>
-        <div class="badge">🏅 Diseño</div>
-        <div class="badge">🏅 Investigación</div>
-        <div class="badge">🏅 Gobernanza</div>
-        <div class="badge">🏅 Bienestar</div>
+        </section>
 
-      </div>
+        <!-- AQUÍ IRÁ EL CONTENEDOR DINÁMICO -->
 
-    </section>
+    </main>
 
-  </main>
-
-  <script src="js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 </html>

@@ -1,20 +1,49 @@
-// ===========================
+// =======================================
 // IMPULSO UAEMÉX 365
 // Dashboard
-// ===========================
+// =======================================
 
-const alumno = JSON.parse(localStorage.getItem("alumno"));
+document.addEventListener("DOMContentLoaded", () => {
 
-if (!alumno) {
-    window.location.href = "index.html";
-}
+    const alumno = JSON.parse(localStorage.getItem("alumno"));
 
-// Saludo del alumno
-document.getElementById("saludo").textContent =
-    "Bienvenido, " + alumno.nombre;
+    if (!alumno) {
+        window.location.href = "index.html";
+        return;
+    }
 
-// Abrir tierra temática
-function abrirTierra(id) {
+    // Saludo
+    document.getElementById("saludo").textContent =
+        "Bienvenido " + alumno.nombre;
+
+    // Pasaporte
+    document.getElementById("nombrePass").textContent =
+        "Alumno: " + alumno.nombre;
+
+    document.getElementById("carreraPass").textContent =
+        "Carrera: " + alumno.carrera;
+
+    document.getElementById("cuentaPass").textContent =
+        "Número de cuenta: " + alumno.control;
+
+    // Navegación superior
+    const botones = document.querySelectorAll(".nav-link");
+    const paneles = document.querySelectorAll(".tab-content");
+
+    botones.forEach((boton)=>{
+        boton.addEventListener("click",()=>{
+            botones.forEach(b=>b.classList.remove("active"));
+            paneles.forEach(p=>p.classList.remove("active"));
+
+            boton.classList.add("active");
+            document.getElementById(boton.dataset.tab).classList.add("active");
+       });
+   });
+
+});
+
+// Abrir Tierra
+function abrirTierra(id){
 
     localStorage.setItem("tierra", id);
 
