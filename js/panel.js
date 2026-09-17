@@ -1,69 +1,73 @@
 // ======================================
-// PANEL ADMINISTRADOR
-// GENERADOR DE QR
+// PANEL ADMINISTRADOR — GENERADOR DE QR
 // ======================================
 
 const escenarios = [
-    {id:1,nombre:"Cultura",prefijo:"CUL"},
-    {id:2,nombre:"Deporte",prefijo:"DEP"},
-    {id:3,nombre:"Tecnología",prefijo:"TEC"},
-    {id:4,nombre:"Diseño",prefijo:"DIS"},
-    {id:5,nombre:"Investigación",prefijo:"INV"},
-    {id:6,nombre:"Gobernanza",prefijo:"GOB"},
-    {id:7,nombre:"Bienestar",prefijo:"BIE"}
+    { id: 1, nombre: "Cultura", prefijo: "CUL" },
+    { id: 2, nombre: "Deporte", prefijo: "DEP" },
+    { id: 3, nombre: "Tecnología", prefijo: "TEC" },
+    { id: 4, nombre: "Diseño", prefijo: "DIS" },
+    { id: 5, nombre: "Investigación", prefijo: "INV" },
+    { id: 6, nombre: "Gobernanza", prefijo: "GOB" },
+    { id: 7, nombre: "Bienestar", prefijo: "BIE" }
 ];
 
 const contenedor = document.getElementById("contenedorQR");
+const botonGenerar = document.getElementById("generarQR");
 
-// Crear actividades en Supabase
-async function generarActividades(){
+botonGenerar.addEventListener("click", generarActividades);
 
+async function generarActividades() {
+    botonGenerar.disabled = true;
+    botonGenerar.textContent = "Generando...";
     contenedor.innerHTML = "";
 
-    for(const escenario of escenarios){
-
-        for(let i=1;i<=6;i++){
-
-            const codigo =
-            `IMPULSO2026-${escenario.prefijo}-${String(i).padStart(2,"0")}`;
-
-            // Guardar en Supabase
-            await supabase
-            .from("actividades")
-            .upsert({
+    const actividades = escenarios.flatMap(escenario =>
+        Array.from({ length: 6 }, (_, indice) => {
+            const numero = indice + 1;
+            return {
                 escenario: escenario.id,
-                numero: i,
-                nombre: `Actividad ${i}`,
-                qr: codigo
-            },{
-                onConflict:"qr"
-            });
+                numero,
+                nombre: `Actividad ${numero}`,
+                qr: `IMPULSO2026-${escenario.prefijo}-${String(numero).padStart(2, "0")}`
+            };
+        })
+    );
 
-            // Crear tarjeta visual
-            const card = document.createElement("div");
-            card.className = "qr-card";
+    const { error } = await supabase
+        .from("actividades")
+        .upsert(actividades, { onConflict: "qr" });
 
-            card.innerHTML = `
-                <h3>${escenario.nombre}</h3>
-                <small>Actividad ${i}</small>
-
-                <div id="${codigo}" class="qr-img"></div>
-
-                <p>${codigo}</p>
-            `;
-
-            contenedor.appendChild(card);
-
-            new QRCode(document.getElementById(codigo),{
-                text: codigo,
-                width:140,
-                height:140
-            });
-
-        }
-
+    if (error) {
+        console.error("Error al crear actividades:", error);
+        const mensaje = error.code === "42501"
+            ? "Supabase bloqueó la creación por sus políticas RLS. Ejecuta supabase/schema.sql en el SQL Editor."
+            : "No fue posible crear las actividades en Supabase.";
+        alert(mensaje);
+        botonGenerar.disabled = false;
+        botonGenerar.textContent = "Generar QR";
+        return;
     }
 
-    alert("Los 42 QR fueron creados correctamente.");
+    actividades.forEach(actividad => {
+        const escenario = escenarios.find(item => item.id === actividad.escenario);
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "qr-card";
+        tarjeta.innerHTML = `
+            <h3>${escenario.nombre}</h3>
+            <small>Actividad ${actividad.numero}</small>
+            <div id="${actividad.qr}" class="qr-img"></div>
+            <p>${actividad.qr}</p>
+        `;
+        contenedor.appendChild(tarjeta);
 
+        new QRCode(document.getElementById(actividad.qr), {
+            text: actividad.qr,
+            width: 140,
+            height: 140
+        });
+    });
+
+    botonGenerar.textContent = "QR generados";
+    alert("Los 42 QR fueron creados o actualizados correctamente.");
 }

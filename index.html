@@ -20,12 +20,6 @@
         </div>
     </div>
 
-    <nav>
-        <a href="#">Evento</a>
-        <a href="#">Pasaporte</a>
-        <a href="#">Agenda</a>
-        <a href="#">Ubicación</a>
-    </nav>
 </header>
 
 <section class="hero">
@@ -65,12 +59,33 @@
     <input id="correo" type="email"
            placeholder="correo@alumno.uaemex.mx">
 
-    <select id="carrera">
+    <select id="carrera" required>
         <option value="">Selecciona tu carrera</option>
         <option>Ingeniería en Sistemas</option>
         <option>Ingeniería en Computación</option>
         <option>Administración</option>
         <option>Contaduría</option>
+        <optgroup label="Ciencias sociales y administrativas">
+            <option>Derecho</option>
+            <option>Economia</option>
+            <option>Relaciones Economicas Internacionales</option>
+            <option>Ciencias Politicas y Administracion Publica</option>
+        </optgroup>
+        <optgroup label="Ingenierias y tecnologia">
+            <option>Ingenieria Industrial</option>
+            <option>Ingenieria Mecatronica</option>
+            <option>Ingenieria Civil</option>
+            <option>Diseno Industrial</option>
+        </optgroup>
+        <optgroup label="Ciencias, salud y humanidades">
+            <option>Arquitectura</option>
+            <option>Biologia</option>
+            <option>Enfermeria</option>
+            <option>Medicina</option>
+            <option>Psicologia</option>
+            <option>Comunicacion</option>
+        </optgroup>
+        <option>Otra licenciatura o posgrado de CU UAEMex</option>
     </select>
 
     <button class="btn-registro" onclick="registrarUsuario()">

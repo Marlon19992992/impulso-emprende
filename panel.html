@@ -3,56 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel | Impulso UAEMÉX</title>
-
+    <title>Panel administrativo | Impulso UAEMéx</title>
     <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dashboard-body">
+    <header class="navbar">
+        <div class="nav-logo">
+            <img src="img/logo-uaemex.png" class="logo" alt="Logo UAEMéx">
+            <div class="logo-texto">
+                <h3>IMPULSO UAEMÉX</h3>
+                <span>Panel administrativo</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="resumen-pass">
+            <div>
+                <span class="etiqueta">ADMINISTRADOR</span>
+                <h2>Generador de 42 QR</h2>
+                <p>Se crearán las seis actividades de cada uno de los siete escenarios.</p>
+            </div>
+            <button id="generarQR" class="btn-registro" type="button">Generar QR</button>
+        </section>
+        <section id="contenedorQR" class="grid-qr"></section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="js/supabase.js"></script>
-</head>
-
-<body class="dashboard-body">
-
-<header class="navbar">
-
-    <div class="nav-logo">
-        <img src="img/logo-uaemex.png" class="logo">
-        <div class="logo-texto">
-            <h3>IMPULSO UAEMÉX</h3>
-            <span>Panel Administrativo</span>
-        </div>
-    </div>
-
-</header>
-
-<main class="dashboard">
-
-    <section class="resumen-pass">
-
-        <div>
-            <span class="etiqueta">ADMINISTRADOR</span>
-            <h2>Generador de 42 QR</h2>
-            <p>Se crearán automáticamente las 6 actividades de cada uno de los 7 escenarios.</p>
-        </div>
-
-        <button class="btn-registro" onclick="generarActividades()">
-            Generar QR
-        </button>
-
-    </section>
-
-    <section id="contenedorQR" class="grid-qr"></section>
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/panel.js"></script>
-
-<button class="btn-registro" onclick="generarActividades()">
-    Generar 42 QR
-</button>
-
+    <script src="js/panel.js"></script>
 </body>
 </html>

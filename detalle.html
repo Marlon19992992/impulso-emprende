@@ -3,113 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tierra</title>
-
+    <title>Actividades de la Tierra | Impulso UAEMéx</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body class="detalle-body">
-
-<header class="detalle-header">
-    <button class="volver" onclick="history.back()">←</button>
-
-    <div>
-        <small id="nombreTierra">TIERRA</small>
-        <h1 id="tituloTierra">Cultura</h1>
-        <p id="descripcionTierra"></p>
-    </div>
-</header>
-
-<main class="detalle-main">
-
-    <section class="progreso-card">
+    <header class="detalle-header">
+        <button class="volver" type="button" onclick="history.back()" aria-label="Volver">←</button>
         <div>
-            <span class="etiqueta">PROGRESO</span>
-            <h2 id="contador">0 / 6 actividades</h2>
-            <p>Completa las seis actividades para desbloquear la insignia.</p>
+            <small id="nombreTierra">TIERRA</small>
+            <h1 id="tituloTierra">Cultura</h1>
+            <p id="descripcionTierra"></p>
         </div>
+    </header>
 
-        <div class="badge-lock" id="badgeEstado">🏅</div>
-    </section>
+    <main class="detalle-main">
+        <section class="progreso-card">
+            <div>
+                <span class="etiqueta">PROGRESO</span>
+                <h2 id="contador">0 / 6 actividades</h2>
+                <p>Completa las seis actividades para desbloquear la insignia.</p>
+            </div>
+            <div class="badge-lock" id="badgeEstado">🏅</div>
+        </section>
+        <section class="lista-actividades" id="listaActividades"></section>
+    </main>
 
-    <!-- SOLO la lista -->
-    <section class="lista-actividades" id="listaActividades"></section>
-
-</main>
-
-<!-- Modal QR -->
-<div id="qrModal" class="qr-modal">
-    <div class="qr-box">
-        <h2>Escanea el QR</h2>
-        <div id="reader"></div>
-
-        <button class="cerrarQR" onclick="cerrarQR()">
-            Cancelar
-        </button>
-    </div>
-</div>
-
-<!-- MODAL EVIDENCIAS -->
-<div id="fotoModal" class="foto-modal">
-
-    <div class="foto-box">
-
-        <h2>Evidencia de asistencia</h2>
-
-        <p>Toma dos fotografías del evento.</p>
-
-        <div class="preview-grid">
-
-            <label class="foto-slot">
-
-                <input type="file"
-                       id="foto1"
-                       accept="image/*"
-                       capture="environment"
-                       hidden>
-
-                <img id="preview1">
-
-                <span>Foto 1</span>
-
-            </label>
-
-            <label class="foto-slot">
-
-                <input type="file"
-                       id="foto2"
-                       accept="image/*"
-                       capture="environment"
-                       hidden>
-
-                <img id="preview2">
-
-                <span>Foto 2</span>
-
-            </label>
-
+    <div id="qrModal" class="qr-modal" role="dialog" aria-modal="true" aria-labelledby="tituloQR">
+        <div class="qr-box">
+            <h2 id="tituloQR">Escanea el QR</h2>
+            <div id="reader"></div>
+            <button class="cerrarQR" type="button" onclick="cerrarQR()">Cancelar</button>
         </div>
-
-        <button class="btn-finalizar" onclick="guardarEvidencias()">
-            Finalizar actividad
-        </button>
-
     </div>
 
-</div>
+    <div id="fotoModal" class="foto-modal" role="dialog" aria-modal="true" aria-labelledby="tituloEvidencia">
+        <div class="foto-box">
+            <h2 id="tituloEvidencia">Evidencia de asistencia</h2>
+            <p>Toma las dos fotografías solicitadas del evento.</p>
+            <div class="preview-grid">
+                <label class="foto-slot">
+                    <input type="file" id="foto1" accept="image/*" capture="environment" hidden>
+                    <img id="preview1" alt="Vista previa de la primera evidencia">
+                    <span>Foto 1</span>
+                </label>
+                <label class="foto-slot">
+                    <input type="file" id="foto2" accept="image/*" capture="environment" hidden>
+                    <img id="preview2" alt="Vista previa de la segunda evidencia">
+                    <span>Foto 2</span>
+                </label>
+            </div>
+            <button class="btn-finalizar" type="button" onclick="guardarEvidencias()">Finalizar actividad</button>
+        </div>
+    </div>
 
-<!-- Scripts al final -->
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="js/detalle.js"></script>
-
-</body>
-</html>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="js/supabase.js"></script>
-<script src="js/detalle.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/detalle.js"></script>
 </body>
 </html>

@@ -97,6 +97,11 @@
 
     <!-- TIERRAS -->
     <section id="panel-tierras" class="panel active">
+        <header class="tierras-header">
+            <span class="etiqueta">EXPLORA EL FESTIVAL</span>
+            <h2>Las 7 Tierras</h2>
+            <p>Conoce cada escenario temático y descubre las experiencias que encontrarás durante el festival.</p>
+        </header>
         <div class="grid-tierras" id="gridTierras"></div>
     </section>
 
@@ -116,7 +121,7 @@
 
             <div class="contador-pass">
                 <small>INSIGNIAS</small>
-                <h1 id="contadorInsignias">0</h1>
+                <h1 data-contador-insignias>0</h1>
                 <span>/ 7</span>
             </div>
 
@@ -128,43 +133,134 @@
 
     <!-- INSIGNIAS -->
     <section id="panel-insignias" class="panel">
-        <h2>Mis insignias</h2>
-        <div class="grid-insignias" id="listaInsignias"></div>
+
+    <div class="insignias-header">
+        <span class="etiqueta">COLECCIÓN DIGITAL</span>
+        <h2>Mis Insignias</h2>
+        <p>
+            Completa las seis actividades de cada Tierra para desbloquear su insignia oficial.
+        </p>
+    </div>
+
+    <div class="resumen-insignias">
+
+        <div class="dato">
+            <span>Desbloqueadas</span>
+            <h1 data-contador-insignias>0</h1>
+        </div>
+
+        <div class="dato">
+            <span>Total</span>
+            <h1>7</h1>
+        </div>
+
+        <div class="dato">
+            <span>Progreso</span>
+            <h1 id="porcentajeInsignias">0%</h1>
+        </div>
+
+    </div>
+
+    <div class="grid-insignias">
+
+        <div class="insignia bloqueada">
+            <div class="medalla">🎭</div>
+            <h3>Cultura</h3>
+            <p>Completa la Tierra Cultura</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">🏅</div>
+            <h3>Deporte</h3>
+            <p>Completa la Tierra Deporte</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">💻</div>
+            <h3>Tecnología</h3>
+            <p>Completa la Tierra Tecnología</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">🎨</div>
+            <h3>Diseño</h3>
+            <p>Completa la Tierra Diseño</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">🔬</div>
+            <h3>Investigación</h3>
+            <p>Completa la Tierra Investigación</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">⚖️</div>
+            <h3>Gobernanza</h3>
+            <p>Completa la Tierra Gobernanza</p>
+        </div>
+
+        <div class="insignia bloqueada">
+            <div class="medalla">🌿</div>
+            <h3>Bienestar</h3>
+            <p>Completa la Tierra Bienestar</p>
+        </div>
+
+    </div>
+
     </section>
 
     <!-- AGENDA -->
     <section id="panel-agenda" class="panel">
+
+    <div class="agenda-header">
+        <span class="etiqueta">PROGRAMA OFICIAL</span>
         <h2>Agenda del Festival</h2>
-    </section>
+        <p>
+            Consulta los horarios de las actividades y recorre los siete escenarios
+            durante el Impulso UAEMÉX 365.
+        </p>
+    </div>
+
+    <div class="agenda-card">
+        <div class="hora">09:00</div>
+        <div class="agenda-info">
+            <h3>Inauguración del Festival</h3>
+            <p>Auditorio Principal · Bienvenida institucional</p>
+        </div>
+    </div>
+
+    <div class="agenda-card">
+        <div class="hora">10:30</div>
+        <div class="agenda-info">
+            <h3>Inicio de Talleres</h3>
+            <p>Los 7 escenarios temáticos comienzan actividades</p>
+        </div>
+    </div>
+
+    <div class="agenda-card">
+        <div class="hora">13:00</div>
+        <div class="agenda-info">
+            <h3>Networking UAEMÉX</h3>
+            <p>Zona de emprendimiento · Conecta con empresas y emprendedores</p>
+        </div>
+    </div>
+
+    <div class="agenda-card">
+        <div class="hora">16:30</div>
+        <div class="agenda-info">
+            <h3>Conferencia Magistral</h3>
+            <p>Auditorio Principal · Cierre de actividades del día</p>
+        </div>
+    </div>
+
+  </section>
 
     <!-- MAPA -->
     <section id="panel-mapa" class="panel">
         <h2>Mapa del evento</h2>
     </section>
 
-</div>
-
-    <section class="pasaporte">
-
-        <div class="resumen-pass">
-
-            <div>
-                <span class="etiqueta">PASAPORTE DIGITAL</span>
-                <h2>Mi progreso</h2>
-                <p>Completa las 7 Tierras para desbloquear las insignias.</p>
-            </div>
-
-            <div class="contador-pass">
-                <small>INSIGNIAS</small>
-                <h1 id="contadorInsignias">0</h1>
-                <span>/ 7</span>
-            </div>
-
-        </div>
-
-        <div class="grid-tierras" id="gridTierras"></div>
-
-    </section>
+    </div>
 
 </main>
 

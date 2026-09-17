@@ -145,26 +145,27 @@ document.getElementById("nombreTierra").textContent = tierra.nombre;
 document.getElementById("tituloTierra").textContent = "Tierra " + tierra.nombre;
 document.getElementById("descripcionTierra").textContent = tierra.descripcion;
 
-// PREVIEWS
-document.getElementById("foto1").addEventListener("change",e=>{
+// PREVISTAS DE EVIDENCIA
+function mostrarVistaPrevia(inputId, previewId){
+    document.getElementById(inputId).addEventListener("change", e => {
+        const file = e.target.files[0];
+        if(!file) return;
 
-    const file=e.target.files[0];
+        const imagen = document.getElementById(previewId);
+        imagen.src = URL.createObjectURL(file);
+        imagen.style.display = "block";
+    });
+}
 
-    if(!file) return;
-
-    const img=document.getElementById("preview1");
-
-    img.src=URL.createObjectURL(file);
-
-    img.style.display="block";
-
-});
+mostrarVistaPrevia("foto1", "preview1");
+mostrarVistaPrevia("foto2", "preview2");
 
 async function guardarEvidencias(){
 
     const foto = document.getElementById("foto1").files[0];
+    const foto2 = document.getElementById("foto2").files[0];
 
-    if(!foto){
+    if(!foto || !foto2){
         alert("Debes tomar una fotografía.");
         return;
     }
@@ -186,18 +187,23 @@ async function guardarEvidencias(){
     // Registrar asistencia
     const { error: asistenciaError } = await supabase
         .from("asistencias")
-        .insert({
+        .upsert({
             usuario: usuarioDB.id,
             actividad: localStorage.getItem("actividadID")
+        },{
+            onConflict:"usuario,actividad"
         });
 
     if(asistenciaError){
-        alert("Error al registrar la asistencia.");
+        const mensaje = asistenciaError.code === "42501"
+            ? "Supabase bloqueó el registro de asistencia por sus políticas de seguridad."
+            : "Error al registrar la asistencia.";
+        alert(mensaje);
         console.error(asistenciaError);
         return;
     }
 
-    document.getElementById("fotoModal").style.display = "flex";
+    document.getElementById("fotoModal").style.display = "none";
 
     const estado = document.getElementById(`estado${actividadActual}`);
     const boton  = document.getElementById(`btn${actividadActual}`);
@@ -208,7 +214,7 @@ async function guardarEvidencias(){
     boton.textContent = "✓ Completada";
     boton.disabled = true;
 
-    actividadesCompletadas++;
+    actividadesCompletadas = Math.min(6, actividadesCompletadas + 1);
     localStorage.setItem(`progreso_${id}`, actividadesCompletadas);
 
     actualizarContador();
