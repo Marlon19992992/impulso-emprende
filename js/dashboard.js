@@ -1,7 +1,6 @@
 // ======================================
 // DASHBOARD - PASAPORTE DIGITAL
 // ======================================
-
 const usuario = JSON.parse(localStorage.getItem("usuario"));
 
 if (!usuario) {

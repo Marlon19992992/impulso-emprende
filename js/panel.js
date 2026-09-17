@@ -1,121 +1,69 @@
 // ======================================
 // PANEL ADMINISTRADOR
+// GENERADOR DE QR
 // ======================================
 
-// Verificar sesión
-if (localStorage.getItem("admin") !== "true") {
-    window.location.href = "admin.html";
-}
+const escenarios = [
+    {id:1,nombre:"Cultura",prefijo:"CUL"},
+    {id:2,nombre:"Deporte",prefijo:"DEP"},
+    {id:3,nombre:"Tecnología",prefijo:"TEC"},
+    {id:4,nombre:"Diseño",prefijo:"DIS"},
+    {id:5,nombre:"Investigación",prefijo:"INV"},
+    {id:6,nombre:"Gobernanza",prefijo:"GOB"},
+    {id:7,nombre:"Bienestar",prefijo:"BIE"}
+];
 
-// Alumnos registrados
-let alumnos = JSON.parse(localStorage.getItem("alumnos")) || [];
+const contenedor = document.getElementById("contenedorQR");
 
-// Referencias
-const tabla = document.getElementById("tablaAlumnos");
-const buscar = document.getElementById("buscar");
-const cerrar = document.getElementById("cerrarAdmin");
+// Crear actividades en Supabase
+async function generarActividades(){
 
-// Mostrar alumnos
-function cargar(lista) {
+    contenedor.innerHTML = "";
 
-    tabla.innerHTML = "";
+    for(const escenario of escenarios){
 
-    if (lista.length === 0) {
+        for(let i=1;i<=6;i++){
 
-        tabla.innerHTML = `
-            <div class="alumno-card">
-                <div class="alumno-info">
-                    <h3>No hay alumnos registrados</h3>
-                    <p>Registra alumnos desde la página principal.</p>
-                </div>
-            </div>
-        `;
-        return;
+            const codigo =
+            `IMPULSO2026-${escenario.prefijo}-${String(i).padStart(2,"0")}`;
+
+            // Guardar en Supabase
+            await supabase
+            .from("actividades")
+            .upsert({
+                escenario: escenario.id,
+                numero: i,
+                nombre: `Actividad ${i}`,
+                qr: codigo
+            },{
+                onConflict:"qr"
+            });
+
+            // Crear tarjeta visual
+            const card = document.createElement("div");
+            card.className = "qr-card";
+
+            card.innerHTML = `
+                <h3>${escenario.nombre}</h3>
+                <small>Actividad ${i}</small>
+
+                <div id="${codigo}" class="qr-img"></div>
+
+                <p>${codigo}</p>
+            `;
+
+            contenedor.appendChild(card);
+
+            new QRCode(document.getElementById(codigo),{
+                text: codigo,
+                width:140,
+                height:140
+            });
+
+        }
+
     }
-    function actualizarEstadisticas(){
 
-    document.getElementById("totalAlumnos").textContent =
-        alumnos.length;
-
-    let asistencias = 0;
-
-    alumnos.forEach(alumno=>{
-
-        const progreso = JSON.parse(
-            localStorage.getItem("pasaporte_"+alumno.control)
-        ) || [];
-
-        asistencias += progreso.filter(a=>a.done).length;
-
-    });
-
-    document.getElementById("totalAsistencias").textContent =
-        asistencias;
-
-    document.getElementById("totalInsignias").textContent =
-        asistencias;
+    alert("Los 42 QR fueron creados correctamente.");
 
 }
-
-    lista.forEach((a) => {
-
-        const card = document.createElement("div");
-        card.className = "alumno-card";
-
-        card.innerHTML = `
-            <div class="alumno-info">
-                <h3>${a.nombre}</h3>
-                <p><strong>Control:</strong> ${a.control}</p>
-                <p>${a.carrera}</p>
-            </div>
-
-            <button class="ver-btn">Ver</button>
-        `;
-
-        // Abrir ficha del alumno
-        card.querySelector(".ver-btn").addEventListener("click", () => {
-
-            localStorage.setItem(
-                "alumnoSeleccionado",
-                JSON.stringify(a)
-            );
-
-            window.location.href = "detalle.html";
-
-        });
-
-        tabla.appendChild(card);
-
-    });
-
-}
-
-// Buscador
-buscar.addEventListener("input", () => {
-
-    const texto = buscar.value.toLowerCase();
-
-    const filtrados = alumnos.filter((a) => {
-
-        return (
-            a.nombre.toLowerCase().includes(texto) ||
-            a.control.includes(texto)
-        );
-
-    });
-
-    cargar(filtrados);
-
-});
-
-// Cerrar sesión
-cerrar.addEventListener("click", () => {
-
-    localStorage.removeItem("admin");
-    window.location.href = "admin.html";
-
-});
-
-// Inicializar
-actualizarEstadisticas();
-cargar(alumnos);

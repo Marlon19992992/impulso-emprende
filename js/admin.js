@@ -1,42 +1,42 @@
-// =======================================
-// IMPULSO EMPRENDE 2026
-// LOGIN ADMINISTRADOR
-// =======================================
+const escenarios = [
+    { prefijo:"CUL", nombre:"Cultura" },
+    { prefijo:"DEP", nombre:"Deporte" },
+    { prefijo:"TEC", nombre:"Tecnología" },
+    { prefijo:"DIS", nombre:"Diseño" },
+    { prefijo:"INV", nombre:"Investigación" },
+    { prefijo:"GOB", nombre:"Gobernanza" },
+    { prefijo:"BIE", nombre:"Bienestar" }
+];
 
-// Si ya inició sesión entra directo al panel
-if (localStorage.getItem("admin") === "true") {
-    window.location.href = "panel.html";
-}
+const contenedor = document.getElementById("contenedorQR");
 
-const formulario = document.getElementById("loginAdmin");
-const mensaje = document.getElementById("mensaje");
+escenarios.forEach(escenario=>{
 
-formulario.addEventListener("submit", function (e) {
+    for(let i=1;i<=6;i++){
 
-    e.preventDefault();
+        const codigo =
+        `IMPULSO2026-${escenario.prefijo}-${String(i).padStart(2,"0")}`;
 
-    const usuario = document.getElementById("usuario").value.trim();
-    const password = document.getElementById("password").value.trim();
+        const card = document.createElement("div");
 
-    // Credenciales temporales
-    if (usuario === "admin" && password === "uaemex2026") {
+        card.className = "qr-card";
 
-        localStorage.setItem("admin", "true");
+        card.innerHTML = `
+            <h3>${escenario.nombre}</h3>
+            <small>Actividad ${i}</small>
 
-        mensaje.style.color = "#22c55e";
-        mensaje.textContent = "Acceso correcto...";
+            <div class="qr-img" id="${codigo}"></div>
 
-        setTimeout(() => {
-            window.location.href = "panel.html";
-        }, 500);
+            <p>${codigo}</p>
+        `;
 
-    } else {
+        contenedor.appendChild(card);
 
-        mensaje.style.color = "#ef4444";
-        mensaje.textContent = "Usuario o contraseña incorrectos";
-
-        document.getElementById("password").value = "";
-        document.getElementById("password").focus();
+        new QRCode(document.getElementById(codigo),{
+            text: codigo,
+            width:140,
+            height:140
+        });
 
     }
 

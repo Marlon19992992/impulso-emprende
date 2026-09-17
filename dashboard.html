@@ -23,13 +23,29 @@
         </div>
     </div>
 
-    <nav class="nav-menu">
-        <button class="nav-link active">Tierras</button>
-        <button class="nav-link">Insignias</button>
-        <button class="nav-link">Mi Pasaporte</button>
-        <button class="nav-link">Agenda</button>
-        <button class="nav-link">Mapa</button>
-    </nav>
+   <nav class="nav-menu">
+
+     <button class="nav-link active" data-panel="tierras">
+         Tierras
+     </button>
+
+     <button class="nav-link" data-panel="insignias">
+        Insignias
+     </button>
+
+     <button class="nav-link" data-panel="pasaporte">
+        Mi Pasaporte
+     </button>
+
+     <button class="nav-link" data-panel="agenda">
+        Agenda
+     </button>
+
+     <button class="nav-link" data-panel="mapa">
+        Mapa
+     </button>
+ 
+</nav>
 
     <div class="nav-user">
         <small id="tipoUsuario"></small>
@@ -77,6 +93,57 @@
 
     </section>
 
+    <div class="contenido">
+
+    <!-- TIERRAS -->
+    <section id="panel-tierras" class="panel active">
+        <div class="grid-tierras" id="gridTierras"></div>
+    </section>
+
+    <!-- PASAPORTE -->
+    <section id="panel-pasaporte" class="panel">
+
+        <div class="resumen-pass">
+
+            <div>
+                <span class="etiqueta">PASAPORTE DIGITAL</span>
+                <h2>Festival Impulso UAEMÉX 365</h2>
+                <p>
+                    Escanea los QR oficiales y completa los 7 escenarios para
+                    obtener todas tus insignias digitales.
+                </p>
+            </div>
+
+            <div class="contador-pass">
+                <small>INSIGNIAS</small>
+                <h1 id="contadorInsignias">0</h1>
+                <span>/ 7</span>
+            </div>
+
+        </div>
+
+        <div class="grid-tierras" id="gridPasaporte"></div>
+
+    </section>
+
+    <!-- INSIGNIAS -->
+    <section id="panel-insignias" class="panel">
+        <h2>Mis insignias</h2>
+        <div class="grid-insignias" id="listaInsignias"></div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="panel-agenda" class="panel">
+        <h2>Agenda del Festival</h2>
+    </section>
+
+    <!-- MAPA -->
+    <section id="panel-mapa" class="panel">
+        <h2>Mapa del evento</h2>
+    </section>
+
+</div>
+
     <section class="pasaporte">
 
         <div class="resumen-pass">
@@ -101,6 +168,8 @@
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/dashboard.js"></script>
 </body>
 </html>

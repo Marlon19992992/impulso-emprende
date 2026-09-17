@@ -3,126 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Administrador | Impulso Emprende</title>
+    <title>Panel | Impulso UAEMÉX</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/supabase.js"></script>
 </head>
 
-<body>
+<body class="dashboard-body">
 
-<div class="background"></div>
+<header class="navbar">
 
-<!-- NAVBAR -->
-
-<header class="top-nav">
-
-    <div class="nav-brand">
-        <img src="img/logo-uaemex.png" class="nav-logo">
-
-        <div>
-            <h3>IMPULSO EMPRENDE 2026</h3>
-            <p>Panel Administrativo</p>
+    <div class="nav-logo">
+        <img src="img/logo-uaemex.png" class="logo">
+        <div class="logo-texto">
+            <h3>IMPULSO UAEMÉX</h3>
+            <span>Panel Administrativo</span>
         </div>
-    </div>
-
-    <div class="nav-user">
-
-        <span>Administrador</span>
-
-        <button id="cerrarAdmin" class="logout-nav">
-            Salir
-        </button>
-
     </div>
 
 </header>
 
-<!-- CONTENIDO -->
-
 <main class="dashboard">
 
-    <section class="hero-dashboard">
+    <section class="resumen-pass">
 
         <div>
-            <p class="evento">PANEL DE CONTROL</p>
-            <h1>Gestión del Festival</h1>
-            <p class="subtitulo">
-                Administración de alumnos, asistencias e insignias.
-            </p>
+            <span class="etiqueta">ADMINISTRADOR</span>
+            <h2>Generador de 42 QR</h2>
+            <p>Se crearán automáticamente las 6 actividades de cada uno de los 7 escenarios.</p>
         </div>
+
+        <button class="btn-registro" onclick="generarActividades()">
+            Generar QR
+        </button>
 
     </section>
 
-    <!-- MÉTRICAS -->
-
-    <section class="stats-grid">
-
-        <div class="stat-card">
-
-            <span>ALUMNOS</span>
-
-            <h2 id="totalAlumnos">0</h2>
-
-            <p>Registrados</p>
-
-        </div>
-
-        <div class="stat-card">
-
-            <span>ASISTENCIAS</span>
-
-            <h2 id="totalAsistencias">0</h2>
-
-            <p>Actividades completadas</p>
-
-        </div>
-
-        <div class="stat-card">
-
-            <span>INSIGNIAS</span>
-
-            <h2 id="totalInsignias">0</h2>
-
-            <p>Otorgadas</p>
-
-        </div>
-
-    </section>
-
-    <!-- BUSCADOR -->
-
-    <section class="search-box">
-
-        <input
-            id="buscar"
-            type="text"
-            placeholder="Buscar por nombre o número de control..."
-        >
-
-    </section>
-
-    <!-- TABLA -->
-
-    <section>
-
-        <div class="titulo-seccion">
-
-            <h2>Alumnos Registrados</h2>
-
-            <p>
-                Haz clic en “Ver” para abrir el pasaporte del alumno.
-            </p>
-
-        </div>
-
-        <div id="tablaAlumnos" class="tabla-alumnos"></div>
-
-    </section>
+    <section id="contenedorQR" class="grid-qr"></section>
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/panel.js"></script>
+
+<button class="btn-registro" onclick="generarActividades()">
+    Generar 42 QR
+</button>
 
 </body>
 </html>

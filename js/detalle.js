@@ -14,6 +14,10 @@ const tierras = {
         nombre:"Cultura",
         descripcion:"Arte, música y economía creativa.",
         color:"#16A34A",
+        qr:[
+            "IMPULSO2026-CUL-01","IMPULSO2026-CUL-02","IMPULSO2026-CUL-03",
+            "IMPULSO2026-CUL-04","IMPULSO2026-CUL-05","IMPULSO2026-CUL-06"
+        ],
         actividades:[
             ["09:00","Conferencia","Innovación Cultural"],
             ["10:30","Taller","Branding para Artistas"],
@@ -28,6 +32,10 @@ const tierras = {
         nombre:"Deporte",
         descripcion:"Salud y emprendimiento deportivo.",
         color:"#EA580C",
+        qr:[
+            "IMPULSO2026-DEP-01","IMPULSO2026-DEP-02","IMPULSO2026-DEP-03",
+            "IMPULSO2026-DEP-04","IMPULSO2026-DEP-05","IMPULSO2026-DEP-06"
+        ],
         actividades:[
             ["09:00","Conferencia","Marketing Fitness"],
             ["10:30","Taller","Nutrición Deportiva"],
@@ -42,6 +50,10 @@ const tierras = {
         nombre:"Tecnología",
         descripcion:"IA, software y ciberseguridad.",
         color:"#2563EB",
+        qr:[
+            "IMPULSO2026-TEC-01","IMPULSO2026-TEC-02","IMPULSO2026-TEC-03",
+            "IMPULSO2026-TEC-04","IMPULSO2026-TEC-05","IMPULSO2026-TEC-06"
+        ],
         actividades:[
             ["09:00","Magistral","Inteligencia Artificial"],
             ["10:30","Taller","Flutter desde Cero"],
@@ -56,6 +68,10 @@ const tierras = {
         nombre:"Diseño",
         descripcion:"UX/UI y creatividad.",
         color:"#7C3AED",
+        qr:[
+            "IMPULSO2026-DIS-01","IMPULSO2026-DIS-02","IMPULSO2026-DIS-03",
+            "IMPULSO2026-DIS-04","IMPULSO2026-DIS-05","IMPULSO2026-DIS-06"
+        ],
         actividades:[
             ["09:00","Workshop","UX para Startups"],
             ["10:30","Taller","Diseño con IA"],
@@ -70,6 +86,10 @@ const tierras = {
         nombre:"Investigación",
         descripcion:"Ciencia e innovación aplicada.",
         color:"#0D9488",
+        qr:[
+            "IMPULSO2026-INV-01","IMPULSO2026-INV-02","IMPULSO2026-INV-03",
+            "IMPULSO2026-INV-04","IMPULSO2026-INV-05","IMPULSO2026-INV-06"
+        ],
         actividades:[
             ["09:00","Coloquio","Patentes"],
             ["10:30","Panel","Investigación Aplicada"],
@@ -84,6 +104,10 @@ const tierras = {
         nombre:"Gobernanza",
         descripcion:"Derecho y transparencia.",
         color:"#64748B",
+        qr:[
+            "IMPULSO2026-GOB-01","IMPULSO2026-GOB-02","IMPULSO2026-GOB-03",
+            "IMPULSO2026-GOB-04","IMPULSO2026-GOB-05","IMPULSO2026-GOB-06"
+        ],
         actividades:[
             ["09:00","Conferencia","Protección de Datos"],
             ["10:30","Panel","Derecho Digital"],
@@ -98,6 +122,10 @@ const tierras = {
         nombre:"Bienestar",
         descripcion:"Salud, turismo y gastronomía.",
         color:"#15803D",
+        qr:[
+            "IMPULSO2026-BIE-01","IMPULSO2026-BIE-02","IMPULSO2026-BIE-03",
+            "IMPULSO2026-BIE-04","IMPULSO2026-BIE-05","IMPULSO2026-BIE-06"
+        ],
         actividades:[
             ["09:00","Taller","Salud Integral"],
             ["10:30","Experiencia","Gastronomía"],
@@ -108,7 +136,6 @@ const tierras = {
         ]
     }
 };
-
 const tierra = tierras[id];
 
 // ======================================
@@ -118,6 +145,77 @@ document.getElementById("nombreTierra").textContent = tierra.nombre;
 document.getElementById("tituloTierra").textContent = "Tierra " + tierra.nombre;
 document.getElementById("descripcionTierra").textContent = tierra.descripcion;
 
+// PREVIEWS
+document.getElementById("foto1").addEventListener("change",e=>{
+
+    const file=e.target.files[0];
+
+    if(!file) return;
+
+    const img=document.getElementById("preview1");
+
+    img.src=URL.createObjectURL(file);
+
+    img.style.display="block";
+
+});
+
+async function guardarEvidencias(){
+
+    const foto = document.getElementById("foto1").files[0];
+
+    if(!foto){
+        alert("Debes tomar una fotografía.");
+        return;
+    }
+
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    // Buscar usuario
+    const { data: usuarioDB, error } = await supabase
+        .from("usuarios")
+        .select("id")
+        .eq("correo", usuario.correo)
+        .single();
+
+    if(error || !usuarioDB){
+        alert("Usuario no encontrado.");
+        return;
+    }
+
+    // Registrar asistencia
+    const { error: asistenciaError } = await supabase
+        .from("asistencias")
+        .insert({
+            usuario: usuarioDB.id,
+            actividad: localStorage.getItem("actividadID")
+        });
+
+    if(asistenciaError){
+        alert("Error al registrar la asistencia.");
+        console.error(asistenciaError);
+        return;
+    }
+
+    document.getElementById("fotoModal").style.display = "flex";
+
+    const estado = document.getElementById(`estado${actividadActual}`);
+    const boton  = document.getElementById(`btn${actividadActual}`);
+
+    estado.textContent = "Completada";
+    estado.style.color = "#22C55E";
+
+    boton.textContent = "✓ Completada";
+    boton.disabled = true;
+
+    actividadesCompletadas++;
+    localStorage.setItem(`progreso_${id}`, actividadesCompletadas);
+
+    actualizarContador();
+
+    alert("Asistencia registrada correctamente.");
+
+}
 // ======================================
 // CONTADOR
 // ======================================
@@ -203,36 +301,40 @@ function escanearQR(indice){
 
 }
 
-function qrExitoso(decodedText){
+async function qrExitoso(decodedText){
 
-    scanner.stop().then(()=>{
+    // Buscar el QR en Supabase
+    const { data: actividad, error } = await supabase
+        .from("actividades")
+        .select("*")
+        .eq("qr", decodedText)
+        .single();
 
-        cerrarQR();
+    if(error || !actividad){
+        alert("QR inválido.");
+        return;
+    }
 
-        const estado = document.getElementById(`estado${actividadActual}`);
-        const boton  = document.getElementById(`btn${actividadActual}`);
+    // Verificar que pertenece al escenario actual
+    if(actividad.escenario !== id){
+        alert("Este QR pertenece a otra Tierra.");
+        return;
+    }
 
-        if(estado.textContent === "Completada") return;
+    // Verificar que sea la actividad correcta
+    if(actividad.numero !== actividadActual + 1){
+        alert("Escaneaste el QR de otra actividad.");
+        return;
+    }
 
-        estado.textContent = "Completada";
-        estado.style.color = "#22C55E";
+    await scanner.stop();
+    cerrarQR();
 
-        boton.textContent = "✓ Completada";
-        boton.disabled = true;
+    // Guardamos temporalmente la actividad
+    localStorage.setItem("actividadID", actividad.id);
 
-        actividadesCompletadas++;
-
-        localStorage.setItem(
-            `progreso_${id}`,
-            actividadesCompletadas
-        );
-
-        actualizarContador();
-
-        // Próximo sprint
-        alert("QR correcto. Ahora se abrirá la cámara para tomar las 2 fotografías.");
-
-    });
+    // Abrir cámara de evidencias
+    document.getElementById("fotoModal").style.display = "flex";
 
 }
 

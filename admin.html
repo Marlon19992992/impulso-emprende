@@ -1,78 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador | Impulso Emprende 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<title>Administrador QR</title>
+
+<link rel="stylesheet" href="css/styles.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
-<body>
+<body class="dashboard-body">
 
-<div class="background"></div>
+<header class="navbar">
 
-<header class="top-nav">
-    <div class="nav-brand">
-        <img src="img/logo-uaemex.png" class="nav-logo" alt="UAEMéx">
-        <div>
-            <h3>IMPULSO EMPRENDE 2026</h3>
-            <p>Panel de Administración</p>
+    <div class="nav-logo">
+        <img src="img/logo-uaemex.png" class="logo">
+        <div class="logo-texto">
+            <h3>Administrador</h3>
+            <span>Generador de QR</span>
         </div>
     </div>
+
 </header>
 
-<main class="admin-page">
+<main class="dashboard">
 
-    <section class="admin-card">
+    <section class="resumen-pass">
 
-        <div class="admin-header">
-            <div class="admin-icon">🛡️</div>
-            <p>ACCESO RESTRINGIDO</p>
-            <h1>Administrador</h1>
-            <span>
-                Solo personal autorizado del festival puede ingresar al panel de control.
-            </span>
+        <div>
+            <span class="etiqueta">PANEL ADMINISTRATIVO</span>
+            <h2>42 códigos QR del Festival</h2>
+            <p>Cada QR pertenece a una actividad específica.</p>
         </div>
 
-        <form id="loginAdmin" class="admin-form">
-
-            <label for="usuario">Usuario</label>
-            <input
-                id="usuario"
-                type="text"
-                placeholder="Administrador"
-                required
-            >
-
-            <label for="password">Contraseña</label>
-            <input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                required
-            >
-
-            <button type="submit" class="admin-btn">
-                Iniciar Sesión
-            </button>
-
-            <button
-                type="button"
-                class="volver-btn"
-                onclick="window.location.href='index.html'">
-                ← Volver al Registro
-            </button>
-
-        </form>
-
-        <p id="mensaje" class="error-admin"></p>
+        <button class="btn-registro" onclick="window.print()">
+            Imprimir PDF
+        </button>
 
     </section>
 
+    <section class="grid-qr" id="contenedorQR"></section>
+
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/admin.js"></script>
 
 </body>
