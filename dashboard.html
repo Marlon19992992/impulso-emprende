@@ -1,102 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Impulso UAEMÉX</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
 <body class="dashboard-body">
 
     <!-- ========== NAVBAR ========== -->
     <header class="navbar">
 
-        <div class="nav-logo">
-            <img src="img/logo-uaemex.png" alt="UAEMéx" class="logo">
+    <div class="nav-logo">
+        <img src="img/logo-uaemex.png" class="logo">
 
-            <div class="logo-texto">
-                <h3>IMPULSO UAEMÉX 365</h3>
-                <span>Festival Universitario de Innovación</span>
+        <div class="logo-texto">
+            <h3>IMPULSO UAEMÉX 365</h3>
+            <span>Festival Universitario de Innovación</span>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <button class="nav-link active">Tierras</button>
+        <button class="nav-link">Insignias</button>
+        <button class="nav-link">Mi Pasaporte</button>
+        <button class="nav-link">Agenda</button>
+        <button class="nav-link">Mapa</button>
+    </nav>
+
+    <div class="nav-user">
+        <small id="tipoUsuario"></small>
+        <h2 id="nombreUsuario"></h2>
+        <p id="progresoTexto">0 / 7 Tierras</p>
+    </div>
+
+</header>
+
+<main class="dashboard">
+
+    <section class="hero">
+
+        <div class="hero-info">
+
+            <span class="fecha">
+                15–16 OCTUBRE · CENTRO UNIVERSITARIO UAEMÉX
+            </span>
+
+            <h1>Festival Universitario de Innovación</h1>
+
+            <p>
+                Explora las siete Tierras Temáticas, participa en talleres,
+                conferencias y retos de innovación.
+            </p>
+
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <h2>7</h2>
+                <span>Tierras</span>
+            </div>
+
+            <div class="stat">
+                <h2>42</h2>
+                <span>Actividades</span>
+            </div>
+
+            <div class="stat">
+                <h2>7</h2>
+                <span>Insignias</span>
             </div>
         </div>
 
-        <nav class="nav-menu">
+    </section>
 
-            <button class="nav-link active" data-panel="tierras">
-                Tierras
-            </button>
+    <section class="pasaporte">
 
-            <button class="nav-link" data-panel="insignias">
-                Insignias
-            </button>
+        <div class="resumen-pass">
 
-            <button class="nav-link" data-panel="pasaporte">
-                Mi Pasaporte
-            </button>
+            <div>
+                <span class="etiqueta">PASAPORTE DIGITAL</span>
+                <h2>Mi progreso</h2>
+                <p>Completa las 7 Tierras para desbloquear las insignias.</p>
+            </div>
 
-            <button class="nav-link" data-panel="agenda">
-                Agenda
-            </button>
-
-            <button class="nav-link" data-panel="mapa">
-                Mapa
-            </button>
-
-        </nav>
-
-        <div class="nav-user">
-
-            <small>TIERRAS COMPLETADAS</small>
-
-            <h2 id="progresoTexto">0/7</h2>
+            <div class="contador-pass">
+                <small>INSIGNIAS</small>
+                <h1 id="contadorInsignias">0</h1>
+                <span>/ 7</span>
+            </div>
 
         </div>
 
-    </header>
+        <div class="grid-tierras" id="gridTierras"></div>
 
+    </section>
 
-    <!-- ========== CONTENIDO ========== -->
-    <main class="dashboard">
+</main>
 
-        <!-- HERO -->
-        <section class="hero">
-
-            <div class="hero-info">
-
-                <span class="fecha">
-                    15–16 OCTUBRE · CENTRO UNIVERSITARIO UAEMÉX
-                </span>
-
-                <h1>
-                    Festival Universitario de Innovación
-                </h1>
-
-                <p>
-                    Explora las siete Tierras Temáticas, participa en talleres,
-                    conferencias y retos de innovación. Escanea el QR de cada
-                    actividad y obtén tus insignias digitales.
-                </p>
-
-            </div>
-
-            <div class="hero-stats">
-
-                <div class="stat">
-                    <h2>7</h2>
-                    <span>Tierras</span>
-                </div>
-
-                <div class="stat">
-                    <h2>35+</h2>
-                    <span>Actividades</span>
-                </div>
-
-                <div class="stat">
-                    <h2>1500</h2>
-                    <span>Participantes</span>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- AQUÍ IRÁ EL CONTENEDOR DINÁMICO -->
-
-    </main>
-
-    <script src="js/dashboard.js"></script>
-
+<script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -1,71 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tierra Temática</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra</title>
 
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="dashboard-body">
+<body class="detalle-body">
 
-<header class="topbar">
+<header class="detalle-header">
+    <button class="volver" onclick="history.back()">←</button>
 
-<div class="usuario">
-    <img src="img/logo-uaemex.png" class="logo">
     <div>
-        <span id="tipoTierra">TIERRA</span>
-        <h2 id="nombreTierra">Tecnología</h2>
+        <small id="nombreTierra">TIERRA</small>
+        <h1 id="tituloTierra">Cultura</h1>
+        <p id="descripcionTierra"></p>
+    </div>
+</header>
+
+<main class="detalle-main">
+
+    <section class="progreso-card">
+        <div>
+            <span class="etiqueta">PROGRESO</span>
+            <h2 id="contador">0 / 6 actividades</h2>
+            <p>Completa las seis actividades para desbloquear la insignia.</p>
+        </div>
+
+        <div class="badge-lock" id="badgeEstado">🏅</div>
+    </section>
+
+    <!-- SOLO la lista -->
+    <section class="lista-actividades" id="listaActividades"></section>
+
+</main>
+
+<!-- Modal QR -->
+<div id="qrModal" class="qr-modal">
+    <div class="qr-box">
+        <h2>Escanea el QR</h2>
+        <div id="reader"></div>
+
+        <button class="cerrarQR" onclick="cerrarQR()">
+            Cancelar
+        </button>
     </div>
 </div>
 
-<button class="volver" onclick="history.back()">
-← Regresar
-</button>
+<!-- Scripts al final -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="js/detalle.js"></script>
 
-</header>
-
-<main class="dashboard">
-
-<section class="hero">
-
-<h1 id="tituloTierra">Tecnología</h1>
-
-<p id="descripcionTierra">
-Explora las actividades disponibles de esta Tierra.
-</p>
-
-</section>
-
-<section>
-
-<h2>Actividades del día</h2>
-
-<div id="listaActividades"></div>
-
-</section>
-
-<section class="insignias">
-
-<h2>Evidencias del Escenario</h2>
-
-<p>
-Después de escanear el QR de una actividad deberás tomar
-dos fotografías del escenario para obtener tu insignia.
-</p>
-
-<div class="grid-insignias">
-
-<div class="badge">📸 Fotografía 1</div>
-<div class="badge">📸 Fotografía 2</div>
-
-</div>
-
-</section>
-
-</main>
+</body>
+</html>
 
 <script src="js/detalle.js"></script>
 

@@ -86,26 +86,167 @@ body{
 }
 
 
-/* ========= HERO ========= */
+/* HERO INDEX */
 
-.hero{
-    background:linear-gradient(135deg,#0E5E5B,#127B69);
-    border-radius:26px;
-    padding:42px;
+body.landing{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#04151C;
+    color:#fff;
+}
+
+.topbar{
+    height:78px;
+    background:#05070B;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
-    gap:24px;
-}
-.hero-info{
-    flex:1;
-    min-width:280px;
+    padding:0 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.hero-stats{
+.brand{
     display:flex;
-    gap:16px;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    width:52px;
+}
+
+.topbar nav{
+    display:flex;
+    gap:28px;
+}
+
+.topbar nav a{
+    color:#D1D5DB;
+    text-decoration:none;
+}
+
+.hero{
+    width:92%;
+    max-width:1300px;
+    margin:35px auto;
+    min-height:82vh;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    align-items:center;
+    gap:50px;
+    padding:60px;
+    border-radius:28px;
+    background:
+    linear-gradient(rgba(4,14,20,.82),rgba(6,35,39,.84)),
+    url("img/escudo-uaemex.png");
+    background-size:cover;
+    background-position:center;
+}
+
+.fecha{
+    color:#F5C542;
+    letter-spacing:2px;
+    font-size:.9rem;
+}
+
+.hero-info h1{
+    font-size:5rem;
+    line-height:.95;
+    margin:18px 0;
+}
+
+.hero-info p{
+    color:#D8F5EC;
+    max-width:580px;
+    line-height:1.8;
+}
+
+.stats{
+    display:flex;
+    gap:18px;
+    margin-top:35px;
+}
+
+.stats div{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    padding:18px;
+    border-radius:18px;
+    min-width:100px;
+    text-align:center;
+}
+
+.stats h2{
+    color:#F5C542;
+    margin:0;
+}
+
+.registro-card{
+    background:#FFFFFF;
+    color:#111827;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.registro-label{
+    color:#047857;
+    font-size:.75rem;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.registro-card h2{
+    margin:10px 0 22px;
+    color:#064E3B;
+}
+
+.registro-card input,
+.registro-card select{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #D1D5DB;
+    margin-bottom:15px;
+    font-size:.95rem;
+}
+
+.btn-registro{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#047857;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn-registro:hover{
+    background:#065F46;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+padding:30px;
+}
+
+.hero-info h1{
+font-size:3.5rem;
+}
+
+.topbar{
+flex-direction:column;
+height:auto;
+padding:18px;
+gap:12px;
+}
+
 }
 /* ================= CONTENEDOR ================= */
 
@@ -303,50 +444,128 @@ h2{
     border-color:#FACC15;
 }
 
-/* ================= PASAPORTE ================= */
+/* ===========================
+   PASAPORTE DIGITAL
+=========================== */
 
-.pasaporte-card{
-    max-width:650px;
-    margin:auto;
-    background:#071826;
-    border-radius:22px;
-    padding:35px;
-    text-align:center;
+.pasaporte{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
 }
 
-.pasaporte-card p{
-    margin:10px 0;
+.resumen-pass{
+    background:linear-gradient(135deg,#111827,#1F2937);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+}
+
+.etiqueta{
+    color:#F59E0B;
+    font-size:.8rem;
+    letter-spacing:2px;
+    font-weight:600;
+}
+
+.resumen-pass h2{
+    margin:8px 0;
+    font-size:2rem;
+}
+
+.resumen-pass p{
+    color:#D1D5DB;
+    max-width:500px;
+    line-height:1.6;
+}
+
+.contador-pass{
+    text-align:center;
+    min-width:130px;
+}
+
+.contador-pass small{
+    color:#9CA3AF;
+}
+
+.contador-pass h1{
+    font-size:3rem;
+    color:#F59E0B;
+    margin:0;
+}
+
+.contador-pass span{
     color:#D1D5DB;
 }
 
-.qr-box{
-    width:180px;
-    height:180px;
-    margin:25px auto;
-    border-radius:14px;
-    background:white;
+.grid-tierras{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
+}
+
+.tierra-card{
+    background:#111827;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:22px;
+    padding:22px;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.tierra-card:hover{
+    transform:translateY(-6px);
+    border-color:#F59E0B;
+}
+
+.icono-tierra{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#F59E0B;
     color:#111827;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    font-size:22px;
     font-weight:bold;
+    margin-bottom:15px;
 }
 
-.btn-principal{
-    background:#10E7A3;
-    color:#042A31;
-    border:none;
-    padding:13px 28px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-    transition:.2s;
+.tierra-card h3{
+    color:#fff;
+    margin-bottom:5px;
 }
 
-.btn-principal:hover{
-    transform:scale(1.03);
+.tierra-card p{
+    color:#9CA3AF;
+    font-size:.9rem;
 }
 
+.barra{
+    width:100%;
+    height:8px;
+    background:#273244;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.barra div{
+    height:100%;
+    background:#10B981;
+}
+
+.estado{
+    color:#10B981;
+    font-weight:600;
+    font-size:.85rem;
+}
 /* ================= AGENDA ================= */
 
 .agenda-card{
@@ -427,5 +646,406 @@ h2{
     .tierra-full{
         grid-column:auto;
     }
+    
+}
+.registro-card{
+    background:rgba(255,255,255,.96);
+    color:#111827;
+    border-radius:24px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
 
+.registro-card h2{
+    color:#064E3B;
+    margin-bottom:6px;
+}
+
+.registro-card input,
+.registro-card select{
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border:1px solid #D1D5DB;
+    margin-bottom:14px;
+    font-size:.95rem;
+}
+
+.btn-registro{
+    width:100%;
+    background:#047857;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-registro:hover{
+    background:#065F46;
+}
+.pasaporte{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.resumen-pass{
+    background:linear-gradient(135deg,#111827,#1F2937);
+    border-radius:22px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.contador-pass h1{
+    font-size:56px;
+    color:#F5C542;
+}
+
+.grid-tierras{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+}
+
+.tierra-card{
+    background:#111827;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:22px;
+    padding:22px;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.tierra-card:hover{
+    transform:translateY(-6px);
+    border-color:#F5C542;
+}
+
+.icono-tierra{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#F5C542;
+    color:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.barra{
+    height:8px;
+    background:#263244;
+    border-radius:20px;
+    overflow:hidden;
+    margin:14px 0;
+}
+
+.barra div{
+    height:100%;
+    background:#10B981;
+}
+
+/* DETALLE TIERRA */
+
+.actividad-card{
+background:#111827;
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+transition:.25s;
+}
+
+.actividad-card:hover{
+border-color:#F59E0B;
+transform:translateY(-3px);
+}
+
+.actividad-info{
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.hora{
+color:#F59E0B;
+font-weight:700;
+font-size:15px;
+}
+
+.tipo{
+color:#10E7A3;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.estado{
+color:#94A3B8;
+font-size:13px;
+font-weight:600;
+}
+
+.btn-qr{
+background:#047857;
+color:#fff;
+border:none;
+padding:12px 18px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+}
+
+.btn-qr:hover{
+background:#065F46;
+}
+.nav-user{
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.nav-user small{
+    color:#10E7A3;
+    font-size:11px;
+    letter-spacing:1px;
+    font-weight:600;
+}
+
+.nav-user h2{
+    color:#FFFFFF;
+    font-size:20px;
+    margin:0;
+}
+
+.nav-user p{
+    color:#94A3B8;
+    font-size:12px;
+    margin:0;
+}
+/* ===== TARJETAS PASAPORTE ===== */
+
+.cabecera-tierra{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+}
+
+.cabecera-tierra small{
+    color:#94A3B8;
+    letter-spacing:1px;
+}
+
+.cabecera-tierra h3{
+    color:white;
+    margin-top:2px;
+    font-size:20px;
+}
+
+.footer-tierra{
+    display:flex;
+    justify-content:space-between;
+    color:#CBD5E1;
+    font-size:13px;
+}
+
+.icono-tierra{
+    color:white;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+/* ===============================
+   DETALLE DE TIERRA
+=================================*/
+
+.detalle-body{
+    background:#071218;
+    color:white;
+    font-family:'Poppins',sans-serif;
+}
+
+.detalle-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:28px 6%;
+}
+
+.volver{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:none;
+    background:#111827;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.detalle-header small{
+    color:#10E7A3;
+    letter-spacing:2px;
+}
+
+.detalle-header h1{
+    margin:2px 0;
+}
+
+.detalle-header p{
+    color:#CBD5E1;
+}
+
+.progreso-card{
+    margin:0 6% 25px;
+    background:linear-gradient(135deg,#0F766E,#065F46);
+    border-radius:20px;
+    padding:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.badge-lock{
+    width:64px;
+    height:64px;
+    border-radius:18px;
+    background:rgba(255,255,255,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+#listaActividades{
+    padding:0 6% 40px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.actividad-card{
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.actividad-info{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.hora{
+    color:#F5C542;
+    font-weight:700;
+}
+
+.tipo{
+    color:#10E7A3;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+.estado{
+    color:#94A3B8;
+    font-size:13px;
+}
+
+.btn-qr{
+    background:#047857;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:12px 16px;
+    cursor:pointer;
+    font-weight:600;
+}
+.detalle-main{
+    width:92%;
+    max-width:1200px;
+    margin:0 auto;
+    padding-bottom:40px;
+}
+
+.lista-actividades{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.etiqueta{
+    color:#A7F3D0;
+    letter-spacing:2px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.progreso-card p{
+    color:#D1FAE5;
+    margin-top:6px;
+    font-size:14px;
+}
+/* MODAL QR */
+
+.qr-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.qr-box{
+    width:95%;
+    max-width:420px;
+    background:#111827;
+    border-radius:22px;
+    padding:25px;
+}
+
+#reader{
+    width:100%;
+    margin:20px 0;
+}
+
+.cerrarQR{
+    width:100%;
+    background:#374151;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+}
+.dashboard-body{
+    background:#04151C;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    margin:0;
+}
+
+.dashboard{
+    width:92%;
+    max-width:1280px;
+    margin:30px auto;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
 }

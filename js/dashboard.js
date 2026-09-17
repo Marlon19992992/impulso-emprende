@@ -1,52 +1,75 @@
-// =======================================
-// IMPULSO UAEMÉX 365
-// Dashboard
-// =======================================
+// ======================================
+// DASHBOARD - PASAPORTE DIGITAL
+// ======================================
 
-document.addEventListener("DOMContentLoaded", () => {
+const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-    const alumno = JSON.parse(localStorage.getItem("alumno"));
+if (!usuario) {
+    window.location.href = "index.html";
+}
 
-    if (!alumno) {
-        window.location.href = "index.html";
-        return;
-    }
+document.getElementById("nombreUsuario").textContent = usuario.nombre;
+document.getElementById("tipoUsuario").textContent =
+    usuario.tipo === "alumno"
+        ? "ALUMNO UAEMÉX"
+        : "DOCENTE UAEMÉX";
 
-    // Saludo
-    document.getElementById("saludo").textContent =
-        "Bienvenido " + alumno.nombre;
+const tierras = [
+    {id:1,nombre:"Cultura",progreso:0,color:"#16A34A"},
+    {id:2,nombre:"Deporte",progreso:0,color:"#EA580C"},
+    {id:3,nombre:"Tecnología",progreso:0,color:"#2563EB"},
+    {id:4,nombre:"Diseño",progreso:0,color:"#7C3AED"},
+    {id:5,nombre:"Investigación",progreso:0,color:"#0D9488"},
+    {id:6,nombre:"Gobernanza",progreso:0,color:"#64748B"},
+    {id:7,nombre:"Bienestar",progreso:0,color:"#15803D"}
+];
 
-    // Pasaporte
-    document.getElementById("nombrePass").textContent =
-        "Alumno: " + alumno.nombre;
+const grid = document.getElementById("gridTierras");
+const contador = document.getElementById("contadorInsignias");
 
-    document.getElementById("carreraPass").textContent =
-        "Carrera: " + alumno.carrera;
+let obtenidas = 0;
 
-    document.getElementById("cuentaPass").textContent =
-        "Número de cuenta: " + alumno.control;
+tierras.forEach(tierra => {
 
-    // Navegación superior
-    const botones = document.querySelectorAll(".nav-link");
-    const paneles = document.querySelectorAll(".tab-content");
+    if (tierra.progreso === 6) obtenidas++;
 
-    botones.forEach((boton)=>{
-        boton.addEventListener("click",()=>{
-            botones.forEach(b=>b.classList.remove("active"));
-            paneles.forEach(p=>p.classList.remove("active"));
+    const porcentaje = (tierra.progreso / 6) * 100;
 
-            boton.classList.add("active");
-            document.getElementById(boton.dataset.tab).classList.add("active");
-       });
-   });
+    grid.innerHTML += `
+        <div class="tierra-card" onclick="abrirTierra(${tierra.id})">
+
+            <div class="cabecera-tierra">
+
+                <div class="icono-tierra" style="background:${tierra.color}">
+                    ${tierra.id}
+                </div>
+
+                <div>
+                    <small>TIERRA ${tierra.id}</small>
+                    <h3>${tierra.nombre}</h3>
+                </div>
+
+            </div>
+
+            <p>${tierra.progreso} de 6 actividades</p>
+
+            <div class="barra">
+                <div style="width:${porcentaje}%"></div>
+            </div>
+
+            <div class="footer-tierra">
+                <span>En progreso</span>
+                <span>🏅 Insignia</span>
+            </div>
+
+        </div>
+    `;
 
 });
 
-// Abrir Tierra
+contador.textContent = obtenidas;
+
 function abrirTierra(id){
-
     localStorage.setItem("tierra", id);
-
     window.location.href = "detalle.html";
-
 }
