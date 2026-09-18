@@ -46,8 +46,24 @@ async function registrarUsuario(){
     .insert([usuario]);
 
     if (error) {
+    if (error.code === "23505") {
+        const { data: usuarioExistente, error: consultaError } = await supabaseClient
+            .from("usuarios")
+            .select("*")
+            .eq("correo", correo)
+            .maybeSingle();
+
+        if (!consultaError && usuarioExistente) {
+            localStorage.setItem("usuario", JSON.stringify(usuarioExistente));
+            window.location.href = "dashboard.html";
+            return;
+        }
+
+        alert("Este correo ya está registrado.");
+    } else {
     console.error("Supabase:", error);
     alert(`Error ${error.code}: ${error.message}`);
+    }
 
     boton.disabled = false;
     boton.textContent = textoOriginal;
