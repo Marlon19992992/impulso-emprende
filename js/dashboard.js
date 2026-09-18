@@ -35,7 +35,7 @@ function iniciarDashboard() {
         progreso: Number(localStorage.getItem(`progreso_${tierra.id}`)) || 0
     }));
 
-    const insignias = tierras.filter(tierra => tierra.progreso === 6).length;
+    const insignias = tierras.filter(tierra => tierra.progreso === 7).length;
     const porcentajeInsignias = Math.round((insignias / tierras.length) * 100);
 
     document.querySelectorAll("[data-contador-insignias]").forEach(elemento => {
@@ -72,8 +72,8 @@ function renderizarPasaporte(tierras) {
     const grid = document.getElementById("gridPasaporte");
 
     grid.innerHTML = tierras.map(tierra => {
-        const porcentaje = (tierra.progreso / 6) * 100;
-        const estado = tierra.progreso === 6 ? "Insignia obtenida" : "Actividades pendientes";
+        const porcentaje = (tierra.progreso / 7) * 100;
+        const estado = tierra.progreso === 7 ? "Insignia obtenida" : "Actividades pendientes";
 
         return `
             <article class="tierra-card pasaporte-tierra" onclick="abrirTierra(${tierra.id})">
@@ -86,7 +86,7 @@ function renderizarPasaporte(tierras) {
                         <h3>${tierra.nombre}</h3>
                     </div>
                 </div>
-                <p class="progreso">${tierra.progreso} de 6 actividades registradas</p>
+                <p class="progreso">${tierra.progreso} de 7 actividades registradas</p>
                 <div class="barra" aria-label="${porcentaje}% completado">
                     <div style="width: ${porcentaje}%"></div>
                 </div>

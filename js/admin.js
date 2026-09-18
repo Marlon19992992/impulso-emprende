@@ -12,7 +12,7 @@ const contenedor = document.getElementById("contenedorQR");
 
 escenarios.forEach(escenario=>{
 
-    for(let i=1;i<=6;i++){
+    for(let i=1;i<=7;i++){
 
         const codigo =
         `IMPULSO2026-${escenario.prefijo}-${String(i).padStart(2,"0")}`;

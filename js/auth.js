@@ -41,20 +41,18 @@ async function registrarUsuario(){
     boton.disabled = true;
     boton.textContent = "Registrando...";
 
-    const { error } = await supabase
-        .from("usuarios")
-        .insert(usuario);
+    const { error } = await supabaseClient
+    .from("usuarios")
+    .insert([usuario]);
 
-    if(error){
-        console.error("Error al registrar en Supabase:", error);
-        const mensaje = error.code === "42501"
-            ? "El registro está bloqueado por la configuración de Supabase. Contacta a la administración del evento."
-            : "No fue posible completar el registro. Verifica tus datos o intenta nuevamente.";
-        alert(mensaje);
-        boton.disabled = false;
-        boton.textContent = textoOriginal;
-        return;
-    }
+    if (error) {
+    console.error("Supabase:", error);
+    alert(`Error ${error.code}: ${error.message}`);
+
+    boton.disabled = false;
+    boton.textContent = textoOriginal;
+    return;
+}
 
     localStorage.setItem("usuario", JSON.stringify(usuario));
 

@@ -16,7 +16,8 @@ const tierras = {
         color:"#16A34A",
         qr:[
             "IMPULSO2026-CUL-01","IMPULSO2026-CUL-02","IMPULSO2026-CUL-03",
-            "IMPULSO2026-CUL-04","IMPULSO2026-CUL-05","IMPULSO2026-CUL-06"
+            "IMPULSO2026-CUL-04","IMPULSO2026-CUL-05","IMPULSO2026-CUL-06",
+            "IMPULSO2026-CUL-07"
         ],
         actividades:[
             ["09:00","Conferencia","Innovación Cultural"],
@@ -24,7 +25,8 @@ const tierras = {
             ["12:00","Panel","Economía Creativa"],
             ["13:30","Workshop","Producción Musical"],
             ["15:00","Networking","Industrias Creativas"],
-            ["16:30","Conferencia","Arte Digital"]
+            ["16:30","Conferencia","Arte Digital"],
+            ["18:00","Cierre","Encuentro Cultural"]
         ]
     },
 
@@ -34,7 +36,8 @@ const tierras = {
         color:"#EA580C",
         qr:[
             "IMPULSO2026-DEP-01","IMPULSO2026-DEP-02","IMPULSO2026-DEP-03",
-            "IMPULSO2026-DEP-04","IMPULSO2026-DEP-05","IMPULSO2026-DEP-06"
+            "IMPULSO2026-DEP-04","IMPULSO2026-DEP-05","IMPULSO2026-DEP-06",
+            "IMPULSO2026-DEP-07"
         ],
         actividades:[
             ["09:00","Conferencia","Marketing Fitness"],
@@ -42,7 +45,8 @@ const tierras = {
             ["12:00","Workshop","Entrenamiento Inteligente"],
             ["13:30","Panel","Deporte Universitario"],
             ["15:00","Networking","Clubes Deportivos"],
-            ["16:30","Conferencia","Tecnología en el Deporte"]
+            ["16:30","Conferencia","Tecnología en el Deporte"],
+            ["18:00","Retos","Reto Deportivo Final"]
         ]
     },
 
@@ -52,7 +56,8 @@ const tierras = {
         color:"#2563EB",
         qr:[
             "IMPULSO2026-TEC-01","IMPULSO2026-TEC-02","IMPULSO2026-TEC-03",
-            "IMPULSO2026-TEC-04","IMPULSO2026-TEC-05","IMPULSO2026-TEC-06"
+            "IMPULSO2026-TEC-04","IMPULSO2026-TEC-05","IMPULSO2026-TEC-06",
+            "IMPULSO2026-TEC-07"
         ],
         actividades:[
             ["09:00","Magistral","Inteligencia Artificial"],
@@ -60,7 +65,8 @@ const tierras = {
             ["12:00","Workshop","Desarrollo Web"],
             ["13:30","Panel","Ciberseguridad"],
             ["15:00","Laboratorio","IoT y Sensores"],
-            ["16:30","Conferencia","Cloud Computing"]
+            ["16:30","Conferencia","Cloud Computing"],
+            ["18:00","Demo","Innovación en Acción"]
         ]
     },
 
@@ -70,7 +76,8 @@ const tierras = {
         color:"#7C3AED",
         qr:[
             "IMPULSO2026-DIS-01","IMPULSO2026-DIS-02","IMPULSO2026-DIS-03",
-            "IMPULSO2026-DIS-04","IMPULSO2026-DIS-05","IMPULSO2026-DIS-06"
+            "IMPULSO2026-DIS-04","IMPULSO2026-DIS-05","IMPULSO2026-DIS-06",
+            "IMPULSO2026-DIS-07"
         ],
         actividades:[
             ["09:00","Workshop","UX para Startups"],
@@ -78,7 +85,8 @@ const tierras = {
             ["12:00","Masterclass","Figma Pro"],
             ["13:30","Panel","Arquitectura"],
             ["15:00","Workshop","Motion Graphics"],
-            ["16:30","Conferencia","Diseño Inclusivo"]
+            ["16:30","Conferencia","Diseño Inclusivo"],
+            ["18:00","Critica","Diseño en Comunidad"]
         ]
     },
 
@@ -88,7 +96,8 @@ const tierras = {
         color:"#0D9488",
         qr:[
             "IMPULSO2026-INV-01","IMPULSO2026-INV-02","IMPULSO2026-INV-03",
-            "IMPULSO2026-INV-04","IMPULSO2026-INV-05","IMPULSO2026-INV-06"
+            "IMPULSO2026-INV-04","IMPULSO2026-INV-05","IMPULSO2026-INV-06",
+            "IMPULSO2026-INV-07"
         ],
         actividades:[
             ["09:00","Coloquio","Patentes"],
@@ -96,7 +105,8 @@ const tierras = {
             ["12:00","Workshop","Redacción Científica"],
             ["13:30","Seminario","Innovación"],
             ["15:00","Networking","Investigadores"],
-            ["16:30","Conferencia","Transferencia Tecnológica"]
+            ["16:30","Conferencia","Transferencia Tecnológica"],
+            ["18:00","Cierre","Presentación de Investigación"]
         ]
     },
 
@@ -106,7 +116,8 @@ const tierras = {
         color:"#64748B",
         qr:[
             "IMPULSO2026-GOB-01","IMPULSO2026-GOB-02","IMPULSO2026-GOB-03",
-            "IMPULSO2026-GOB-04","IMPULSO2026-GOB-05","IMPULSO2026-GOB-06"
+            "IMPULSO2026-GOB-04","IMPULSO2026-GOB-05","IMPULSO2026-GOB-06",
+            "IMPULSO2026-GOB-07"
         ],
         actividades:[
             ["09:00","Conferencia","Protección de Datos"],
@@ -114,7 +125,8 @@ const tierras = {
             ["12:00","Workshop","Gobierno Abierto"],
             ["13:30","Mesa","Transparencia"],
             ["15:00","Taller","Fiscal Digital"],
-            ["16:30","Conferencia","Ética Tecnológica"]
+            ["16:30","Conferencia","Ética Tecnológica"],
+            ["18:00","Foro","Ciudadanía Digital"]
         ]
     },
 
@@ -124,7 +136,8 @@ const tierras = {
         color:"#15803D",
         qr:[
             "IMPULSO2026-BIE-01","IMPULSO2026-BIE-02","IMPULSO2026-BIE-03",
-            "IMPULSO2026-BIE-04","IMPULSO2026-BIE-05","IMPULSO2026-BIE-06"
+            "IMPULSO2026-BIE-04","IMPULSO2026-BIE-05","IMPULSO2026-BIE-06",
+            "IMPULSO2026-BIE-07"
         ],
         actividades:[
             ["09:00","Taller","Salud Integral"],
@@ -132,7 +145,8 @@ const tierras = {
             ["12:00","Workshop","Turismo Inteligente"],
             ["13:30","Panel","Bienestar Emocional"],
             ["15:00","Networking","Emprendedores"],
-            ["16:30","Conferencia","Calidad de Vida"]
+            ["16:30","Conferencia","Calidad de Vida"],
+            ["18:00","Cierre","Bienestar Comunitario"]
         ]
     }
 };
@@ -166,7 +180,12 @@ async function guardarEvidencias(){
     const foto2 = document.getElementById("foto2").files[0];
 
     if(!foto || !foto2){
-        alert("Debes tomar una fotografía.");
+        alert("Debes tomar las dos fotografías del escenario para recibir la insignia.");
+        return;
+    }
+
+    if(actividadesCompletadas < 7){
+        alert("Primero debes completar las 7 actividades de esta Tierra.");
         return;
     }
 
@@ -184,42 +203,14 @@ async function guardarEvidencias(){
         return;
     }
 
-    // Registrar asistencia
-    const { error: asistenciaError } = await supabase
-        .from("asistencias")
-        .upsert({
-            usuario: usuarioDB.id,
-            actividad: localStorage.getItem("actividadID")
-        },{
-            onConflict:"usuario,actividad"
-        });
-
-    if(asistenciaError){
-        const mensaje = asistenciaError.code === "42501"
-            ? "Supabase bloqueó el registro de asistencia por sus políticas de seguridad."
-            : "Error al registrar la asistencia.";
-        alert(mensaje);
-        console.error(asistenciaError);
-        return;
-    }
-
     document.getElementById("fotoModal").style.display = "none";
 
-    const estado = document.getElementById(`estado${actividadActual}`);
-    const boton  = document.getElementById(`btn${actividadActual}`);
+    localStorage.setItem(`insignia_${id}`, "true");
 
-    estado.textContent = "Completada";
-    estado.style.color = "#22C55E";
-
-    boton.textContent = "✓ Completada";
-    boton.disabled = true;
-
-    actividadesCompletadas = Math.min(6, actividadesCompletadas + 1);
-    localStorage.setItem(`progreso_${id}`, actividadesCompletadas);
-
+    badge.textContent = "🏆";
     actualizarContador();
 
-    alert("Asistencia registrada correctamente.");
+    alert("¡Insignia desbloqueada! Completaste las 7 actividades de esta Tierra.");
 
 }
 // ======================================
@@ -333,14 +324,59 @@ async function qrExitoso(decodedText){
         return;
     }
 
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const { data: usuarioDB, error: usuarioError } = await supabase
+        .from("usuarios")
+        .select("id")
+        .eq("correo", usuario.correo)
+        .single();
+
+    if(usuarioError || !usuarioDB){
+        alert("Usuario no encontrado.");
+        return;
+    }
+
+    const { error: asistenciaError } = await supabase
+        .from("asistencias")
+        .upsert({
+            usuario: usuarioDB.id,
+            actividad: actividad.id
+        }, {
+            onConflict: "usuario,actividad"
+        });
+
+    if(asistenciaError){
+        const mensaje = asistenciaError.code === "42501"
+            ? "Supabase bloqueó el registro de asistencia por sus políticas de seguridad."
+            : "Error al registrar la asistencia.";
+        alert(mensaje);
+        console.error(asistenciaError);
+        return;
+    }
+
     await scanner.stop();
     cerrarQR();
 
-    // Guardamos temporalmente la actividad
-    localStorage.setItem("actividadID", actividad.id);
+    const estado = document.getElementById(`estado${actividadActual}`);
+    const boton = document.getElementById(`btn${actividadActual}`);
 
-    // Abrir cámara de evidencias
-    document.getElementById("fotoModal").style.display = "flex";
+    estado.textContent = "Completada";
+    estado.style.color = "#22C55E";
+
+    boton.textContent = "✓ Completada";
+    boton.disabled = true;
+
+    actividadesCompletadas = Math.min(7, actividadesCompletadas + 1);
+    localStorage.setItem(`progreso_${id}`, actividadesCompletadas);
+    localStorage.setItem("actividadID", actividad.id);
+    actualizarContador();
+
+    if(actividadesCompletadas === 7){
+        alert("Completaste las 7 actividades. Ahora toma dos fotos del escenario para recibir tu insignia.");
+        document.getElementById("fotoModal").style.display = "flex";
+    } else {
+        alert("Actividad registrada correctamente. Continúa con la siguiente actividad.");
+    }
 
 }
 
@@ -364,9 +400,9 @@ function cerrarQR(){
 function actualizarContador(){
 
     contador.textContent =
-        `${actividadesCompletadas} / 6 actividades`;
+        `${actividadesCompletadas} / 7 actividades`;
 
-    if(actividadesCompletadas === 6){
+    if(actividadesCompletadas === 7){
 
         badge.textContent = "🏆";
 

@@ -23,7 +23,7 @@ async function generarActividades() {
     contenedor.innerHTML = "";
 
     const actividades = escenarios.flatMap(escenario =>
-        Array.from({ length: 6 }, (_, indice) => {
+        Array.from({ length: 7 }, (_, indice) => {
             const numero = indice + 1;
             return {
                 escenario: escenario.id,
@@ -69,5 +69,5 @@ async function generarActividades() {
     });
 
     botonGenerar.textContent = "QR generados";
-    alert("Los 42 QR fueron creados o actualizados correctamente.");
+    alert("Los 49 QR fueron creados o actualizados correctamente.");
 }
