@@ -14,8 +14,12 @@ const escenarios = [
 
 const contenedor = document.getElementById("contenedorQR");
 const botonGenerar = document.getElementById("generarQR");
+const botonDescargarPDF = document.getElementById("descargarPDF");
 
 botonGenerar.addEventListener("click", generarActividades);
+botonDescargarPDF.addEventListener("click", () => {
+    window.print();
+});
 
 async function generarActividades() {
     botonGenerar.disabled = true;
